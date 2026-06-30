@@ -86,6 +86,13 @@ impl crate::services::SchedulerService for Collection {
         self.congrats_info()
     }
 
+    fn get_skill_weakness_queue(
+        &mut self,
+        input: scheduler::SkillWeaknessQueueRequest,
+    ) -> Result<scheduler::SkillWeaknessQueueResponse> {
+        self.skill_weakness_queue(input.deck_id.into(), &input.skill_weights)
+    }
+
     fn restore_buried_and_suspended_cards(
         &mut self,
         input: anki_proto::cards::CardIds,

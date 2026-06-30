@@ -64,6 +64,10 @@ service SchedulerService {
   // The number of days the calculated interval was fuzzed by on the previous
   // review (if any). Utilized by the FSRS add-on.
   rpc FuzzDelta(FuzzDeltaRequest) returns (FuzzDeltaResponse);
+  // Speedrun LSAT: order a deck's due cards by student weakness * exam weight,
+  // so the highest-value (weak + heavily-tested) skills surface first.
+  rpc GetSkillWeaknessQueue(SkillWeaknessQueueRequest)
+      returns (SkillWeaknessQueueResponse);
 }
 
 // Implicitly includes any of the above methods that are not listed in the
@@ -482,4 +486,25 @@ message FuzzDeltaRequest {
 
 message FuzzDeltaResponse {
   sint32 delta_days = 1;
+}
+
+// Speedrun LSAT: skill-weakness priority queue.
+message SkillWeaknessQueueRequest {
+  int64 deck_id = 1;
+  // Maps a skill tag (e.g. "lsat::lr::necessary_assumption") to its exam weight.
+  map<string, float> skill_weights = 2;
+}
+
+message SkillWeaknessQueueResponse {
+  message Entry {
+    int64 card_id = 1;
+    // The skill (tag) that produced this card's priority.
+    string skill = 2;
+    // 0..1, higher = the student is weaker on this skill.
+    float weakness = 3;
+    float exam_weight = 4;
+    // weakness * exam_weight; entries are sorted by this, descending.
+    float priority = 5;
+  }
+  repeated Entry entries = 1;
 }
