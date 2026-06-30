@@ -89,3 +89,23 @@ footer {
   line-height: 1.5;
 }
 .loading { text-align: center; color: var(--muted); }
+
+.authbar { margin: 14px auto 0; display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.signin { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.authbar input {
+  background: #0b1424; border: 1px solid #ffffff22; color: var(--text);
+  border-radius: 8px; padding: 8px 10px; font-size: 13px;
+}
+.btn {
+  background: var(--accent); color: #06283a; border: none; border-radius: 8px;
+  padding: 8px 14px; font-weight: 600; cursor: pointer;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: 0.6; cursor: default; }
+.linkbtn {
+  background: transparent; color: var(--accent); border: 1px solid #ffffff22;
+  border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 13px;
+}
+.who { color: var(--muted); font-size: 13px; }
+.msg { color: var(--bad); font-size: 12px; }
+.card .btn { margin-top: 12px; }

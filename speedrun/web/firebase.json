@@ -2,5 +2,14 @@
   "hosting": {
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  },
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "anonymous": true
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules"
   }
 }

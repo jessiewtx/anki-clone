@@ -13,16 +13,17 @@
         Three honest scores — memory, performance, and a projected score that
         refuses to guess when it lacks evidence.
       </p>
+      <div id="authbar" class="authbar"></div>
       <p class="updated" id="updated"></p>
     </header>
-    <main id="app"><p class="loading">Loading scores…</p></main>
+    <main id="app"><p class="loading">Loading…</p></main>
     <footer>
       <p>
-        Scores are computed from real review data in the shared Anki engine.
-        Readiness <strong>abstains</strong> until there is enough evidence (the
-        give-up rule). No made-up numbers.
+        Scores are computed from real review data in the shared Anki engine and
+        stored per-user in Firestore. Readiness <strong>abstains</strong> until
+        there is enough evidence (the give-up rule). No made-up numbers.
       </p>
     </footer>
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
