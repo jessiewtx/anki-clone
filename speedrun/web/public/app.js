@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInAnonymously,
+  GoogleAuthProvider,
+  signInWithPopup,
   signOut,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
@@ -197,6 +199,15 @@ function renderAuthBarSignedOut() {
   inBtn.onclick = () => run(signInWithEmailAndPassword);
   const upBtn = el("button", "linkbtn", "Sign up");
   upBtn.onclick = () => run(createUserWithEmailAndPassword);
+  const google = el("button", "btn", "Sign in with Google");
+  google.onclick = async () => {
+    msg.textContent = "";
+    try {
+      await signInWithPopup(auth, new GoogleAuthProvider());
+    } catch (e) {
+      msg.textContent = (e.code || e.message || "error").replace("auth/", "");
+    }
+  };
   const guest = el("button", "linkbtn", "Continue as guest");
   guest.onclick = async () => {
     try {
@@ -205,7 +216,7 @@ function renderAuthBarSignedOut() {
       msg.textContent = e.code || e.message;
     }
   };
-  form.append(email, pass, inBtn, upBtn, guest, msg);
+  form.append(email, pass, inBtn, upBtn, google, guest, msg);
   bar.append(form);
 
   const appEl = document.getElementById("app");

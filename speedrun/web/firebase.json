@@ -7,8 +7,21 @@
   "auth": {
     "providers": {
       "emailPassword": true,
-      "anonymous": true
-    }
+      "anonymous": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Speedrun LSAT",
+        "supportEmail": "jessie.wang@alphaaiengineering.com",
+        "authorizedRedirectUris": [
+          "https://speedrun-lsat.web.app"
+        ]
+      }
+    },
+    "authorizedDomains": [
+      "localhost",
+      "speedrun-lsat.web.app",
+      "speedrun-lsat-jwang.web.app",
+      "speedrun-lsat-jwang.firebaseapp.com"
+    ]
   },
   "firestore": {
     "rules": "firestore.rules"
