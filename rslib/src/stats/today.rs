@@ -16,8 +16,11 @@ pub fn studied_today(cards: u32, secs: f32, tr: &I18n) -> String {
     } else {
         0.0
     };
-    tr.statistics_studied_today(unit.as_str(), secs_per_card, amount, cards)
-        .into()
+    let message: String = tr
+        .statistics_studied_today(unit.as_str(), secs_per_card, amount, cards)
+        .into();
+    // Speedrun LSAT: temporary end-to-end marker proving our Rust engine edit is live.
+    format!("{message} · Speedrun LSAT")
 }
 
 impl Collection {
@@ -40,11 +43,13 @@ mod test {
         let tr = I18n::template_only();
         assert_eq!(
             &studied_today(3, 13.0, &tr).replace('\n', " "),
-            "Studied 3 cards in 13 seconds today (4.33s/card)"
+            "Studied 3 cards in 13 seconds today (4.33s/card) · Speedrun LSAT"
         );
         assert_eq!(
             &studied_today(300, 5400.0, &tr).replace('\n', " "),
-            "Studied 300 cards in 90 minutes today (18s/card)"
+            "Studied 300 cards in 90 minutes today (18s/card) · Speedrun LSAT"
         );
+        // Speedrun LSAT marker is always appended.
+        assert!(studied_today(1, 1.0, &tr).contains("· Speedrun LSAT"));
     }
 }
