@@ -68,7 +68,9 @@ function formatCard(raw) {
 async function loadDeck() {
   if (DECK) return;
   const raw = await (await fetch("deck.json", { cache: "no-store" })).json();
-  DECK = { sources: raw.sources, cards: raw.cards.map(formatCard) };
+  // Assign DECK.sources BEFORE mapping: formatCard() reads DECK.sources.
+  DECK = { sources: raw.sources, cards: [] };
+  DECK.cards = raw.cards.map(formatCard);
 }
 
 // ---------- scheduling (simple, companion) ----------
