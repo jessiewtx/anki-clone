@@ -1,0 +1,54 @@
+{
+  "updated_at": "2026-06-30T19:10:27+00:00",
+  "exam": "LSAT",
+  "user": "demo",
+  "coverage": {
+    "covered_skills": 18,
+    "total_skills": 20,
+    "pct": 0.9
+  },
+  "memory": {
+    "point": 1.0,
+    "lo": 0.207,
+    "hi": 1.0,
+    "n_reviews": 1,
+    "confidence": "low",
+    "method": "recall success rate on reviews (Wilson 95% CI)"
+  },
+  "performance": {
+    "point": 0.0,
+    "lo": 0.0,
+    "hi": 1.0,
+    "n_attempts": 0,
+    "confidence": "none",
+    "method": "accuracy on practice/exam-style cards (Wilson 95% CI)"
+  },
+  "readiness": {
+    "scale": "120-180",
+    "give_up_rule": ">= 200 graded practice attempts AND >= 50% coverage",
+    "gave_up": true,
+    "missing": [
+      "need >= 200 graded practice attempts (have 0)"
+    ]
+  },
+  "next_to_study": [
+    {
+      "skill": "lsat::lr::flaw",
+      "weakness": 1.0,
+      "exam_weight": 0.1,
+      "priority": 0.1
+    },
+    {
+      "skill": "lsat::lr::inference",
+      "weakness": 1.0,
+      "exam_weight": 0.09,
+      "priority": 0.09
+    },
+    {
+      "skill": "lsat::lr::weaken",
+      "weakness": 1.0,
+      "exam_weight": 0.08,
+      "priority": 0.08
+    }
+  ]
+}

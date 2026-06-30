@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Speedrun LSAT — Readiness Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Speedrun <span>LSAT</span></h1>
+      <p class="sub">
+        Three honest scores — memory, performance, and a projected score that
+        refuses to guess when it lacks evidence.
+      </p>
+      <p class="updated" id="updated"></p>
+    </header>
+    <main id="app"><p class="loading">Loading scores…</p></main>
+    <footer>
+      <p>
+        Scores are computed from real review data in the shared Anki engine.
+        Readiness <strong>abstains</strong> until there is enough evidence (the
+        give-up rule). No made-up numbers.
+      </p>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
