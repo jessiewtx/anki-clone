@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T19:10:27+00:00",
+  "updated_at": "2026-06-30T21:44:54+00:00",
   "exam": "LSAT",
   "user": "demo",
   "coverage": {
@@ -8,11 +8,11 @@
     "pct": 0.9
   },
   "memory": {
-    "point": 1.0,
-    "lo": 0.207,
+    "point": 0.0,
+    "lo": 0.0,
     "hi": 1.0,
-    "n_reviews": 1,
-    "confidence": "low",
+    "n_reviews": 0,
+    "confidence": "none",
     "method": "recall success rate on reviews (Wilson 95% CI)"
   },
   "performance": {
@@ -39,16 +39,16 @@
       "priority": 0.1
     },
     {
-      "skill": "lsat::lr::inference",
+      "skill": "lsat::lr::necessary_assumption",
       "weakness": 1.0,
       "exam_weight": 0.09,
       "priority": 0.09
     },
     {
-      "skill": "lsat::lr::weaken",
+      "skill": "lsat::lr::inference",
       "weakness": 1.0,
-      "exam_weight": 0.08,
-      "priority": 0.08
+      "exam_weight": 0.09,
+      "priority": 0.09
     }
   ]
 }

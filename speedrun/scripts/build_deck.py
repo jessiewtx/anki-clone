@@ -86,6 +86,8 @@ def main() -> int:
         else:
             front, back = practice_fields(data, card)
         note = col.new_note(basic)
+        # Stable guid keyed on our card id, so re-imports update instead of duplicate.
+        note.guid = "speedrun-" + card["id"]
         note["Front"] = front
         note["Back"] = back
         note.tags = list(card["tags"]) + [
