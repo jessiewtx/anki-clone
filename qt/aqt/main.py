@@ -506,7 +506,7 @@ class AnkiQt(QMainWindow):
         restoreGeom(self, "mainWindow")
         restoreState(self, "mainWindow")
         # titlebar
-        self.setWindowTitle(f"{self.pm.name} - Anki")
+        self.setWindowTitle(f"{self.pm.name} - Sharpe")
         # show and raise window for osx
         self.show()
         self.activateWindow()
@@ -1473,8 +1473,13 @@ title="{}" {}>{}</button>""".format(
         qconnect(speedrun_action.triggered, lambda: show_scores(self))
         m.menuTools.addAction(speedrun_action)
 
+        # Sharpe: elimination-gym trap capture + trap-aware re-rank.
+        from aqt import sharpe_gym
+
+        sharpe_gym.init(self)
+
     def updateTitleBar(self) -> None:
-        self.setWindowTitle("Anki")
+        self.setWindowTitle("Sharpe")
 
     # View
     ##########################################################################

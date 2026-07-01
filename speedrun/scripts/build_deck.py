@@ -19,9 +19,12 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 os.chdir(ROOT)
 # Same import setup the dev runner uses (source tree + built generated files).
 sys.path.extend(["pylib", "qt", "out/pylib", "out/qt"])
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from anki.collection import Collection  # noqa: E402
 from anki.exporting import AnkiPackageExporter  # noqa: E402
+
+import sharpe_lr  # noqa: E402
 
 DECK_JSON = os.path.join(ROOT, "speedrun", "decks", "lsat_seed.json")
 OUT_APKG = os.path.join(ROOT, "out", "lsat_seed.apkg")
@@ -67,25 +70,32 @@ def main() -> int:
     col = Collection(os.path.join(tmp_dir, "col.anki2"))
 
     basic = col.models.by_name("Basic")
+    lr_model = sharpe_lr.ensure_model(col)
     counts = {"concept": 0, "practice": 0}
 
     for card in data["cards"]:
-        deck_name = "LSAT::Concepts" if card["type"] == "concept" else "LSAT::Practice"
-        did = col.decks.id(deck_name)
         if card["type"] == "concept":
+            did = col.decks.id("LSAT::Concepts")
+            note = col.new_note(basic)
+            # Stable guid keyed on our card id, so re-imports update instead of duplicate.
+            note.guid = "speedrun-" + card["id"]
             front, back = concept_fields(card)
+            note["Front"] = front
+            note["Back"] = back
         else:
-            front, back = practice_fields(card)
-        note = col.new_note(basic)
-        # Stable guid keyed on our card id, so re-imports update instead of duplicate.
-        note.guid = "speedrun-" + card["id"]
-        note["Front"] = front
-        note["Back"] = back
-        note.tags = list(card["tags"]) + [
+            did = col.decks.id("LSAT::Practice")
+            note = col.new_note(lr_model)
+            # Practice is now the interactive Sharpe LR elimination card.
+            note.guid = "sharpe-elim-" + card["id"]
+            sharpe_lr.populate(note, card)
+        tags = list(card["tags"]) + [
             f'lsat::type::{card["type"]}',
             f'src::{card["source"]}',
             f'id::{card["id"]}',
         ]
+        if card["type"] == "practice":
+            tags += sharpe_lr.trap_tags(card)
+        note.tags = tags
         col.add_note(note, did)
         counts[card["type"]] += 1
 
