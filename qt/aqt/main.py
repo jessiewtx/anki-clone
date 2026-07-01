@@ -1465,6 +1465,14 @@ title="{}" {}>{}</button>""".format(
         )
         m.actionFullScreen.setShortcutContext(Qt.ShortcutContext.ApplicationShortcut)
 
+        # Speedrun LSAT: honest readiness score (memory / performance / readiness).
+        from aqt.qt import QAction
+        from aqt.speedrun_scores import show_scores
+
+        speedrun_action = QAction("Speedrun: Readiness…", self)
+        qconnect(speedrun_action.triggered, lambda: show_scores(self))
+        m.menuTools.addAction(speedrun_action)
+
     def updateTitleBar(self) -> None:
         self.setWindowTitle("Anki")
 
