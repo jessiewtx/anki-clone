@@ -3,112 +3,1245 @@
   "deck": "LSAT",
   "version": 1,
   "sources": {
-    "lsac_lsat": { "name": "LSAC \u2014 About the LSAT", "url": "https://www.lsac.org/lsat" },
-    "khan_lsat": { "name": "Khan Academy \u2014 LSAT prep", "url": "https://www.khanacademy.org/prep/lsat" },
-    "wiki_fallacies": { "name": "Wikipedia \u2014 List of fallacies", "url": "https://en.wikipedia.org/wiki/List_of_fallacies" },
-    "wiki_nec_suff": { "name": "Wikipedia \u2014 Necessity and sufficiency", "url": "https://en.wikipedia.org/wiki/Necessity_and_sufficiency" },
-    "wiki_contraposition": { "name": "Wikipedia \u2014 Contraposition", "url": "https://en.wikipedia.org/wiki/Contraposition" },
-    "wiki_corr_causation": { "name": "Wikipedia \u2014 Correlation does not imply causation", "url": "https://en.wikipedia.org/wiki/Correlation_does_not_imply_causation" },
-    "wiki_affirming_consequent": { "name": "Wikipedia \u2014 Affirming the consequent", "url": "https://en.wikipedia.org/wiki/Affirming_the_consequent" },
-    "wiki_denying_antecedent": { "name": "Wikipedia \u2014 Denying the antecedent", "url": "https://en.wikipedia.org/wiki/Denying_the_antecedent" },
-    "forallx": { "name": "forall x: Calgary (open-access logic textbook)", "url": "https://forallx.openlogicproject.org/" }
+    "lsac_lsat": {
+      "name": "LSAC — About the LSAT",
+      "url": "https://www.lsac.org/lsat"
+    },
+    "khan_lsat": {
+      "name": "Khan Academy — LSAT prep",
+      "url": "https://www.khanacademy.org/prep/lsat"
+    },
+    "wiki_fallacies": {
+      "name": "Wikipedia — List of fallacies",
+      "url": "https://en.wikipedia.org/wiki/List_of_fallacies"
+    },
+    "wiki_nec_suff": {
+      "name": "Wikipedia — Necessity and sufficiency",
+      "url": "https://en.wikipedia.org/wiki/Necessity_and_sufficiency"
+    },
+    "wiki_contraposition": {
+      "name": "Wikipedia — Contraposition",
+      "url": "https://en.wikipedia.org/wiki/Contraposition"
+    },
+    "wiki_corr_causation": {
+      "name": "Wikipedia — Correlation does not imply causation",
+      "url": "https://en.wikipedia.org/wiki/Correlation_does_not_imply_causation"
+    },
+    "wiki_affirming_consequent": {
+      "name": "Wikipedia — Affirming the consequent",
+      "url": "https://en.wikipedia.org/wiki/Affirming_the_consequent"
+    },
+    "wiki_denying_antecedent": {
+      "name": "Wikipedia — Denying the antecedent",
+      "url": "https://en.wikipedia.org/wiki/Denying_the_antecedent"
+    },
+    "forallx": {
+      "name": "forall x: Calgary (open-access logic textbook)",
+      "url": "https://forallx.openlogicproject.org/"
+    },
+    "lsac_official_prep": {
+      "name": "LSAC LawHub — free official LSAT PrepTests",
+      "url": "https://lawhub.lsac.org"
+    }
   },
   "skills": [
-    { "id": "lr_necessary_assumption", "name": "Necessary Assumption", "section": "LR", "examWeight": 0.09 },
-    { "id": "lr_sufficient_assumption", "name": "Sufficient Assumption", "section": "LR", "examWeight": 0.04 },
-    { "id": "lr_strengthen", "name": "Strengthen", "section": "LR", "examWeight": 0.07 },
-    { "id": "lr_weaken", "name": "Weaken", "section": "LR", "examWeight": 0.08 },
-    { "id": "lr_flaw", "name": "Flaw in the Reasoning", "section": "LR", "examWeight": 0.10 },
-    { "id": "lr_inference", "name": "Inference / Must Be True", "section": "LR", "examWeight": 0.09 },
-    { "id": "lr_main_conclusion", "name": "Main Conclusion", "section": "LR", "examWeight": 0.04 },
-    { "id": "lr_method_of_reasoning", "name": "Method of Reasoning", "section": "LR", "examWeight": 0.04 },
-    { "id": "lr_parallel_reasoning", "name": "Parallel Reasoning", "section": "LR", "examWeight": 0.04 },
-    { "id": "lr_principle", "name": "Principle", "section": "LR", "examWeight": 0.05 },
-    { "id": "lr_paradox", "name": "Resolve the Paradox", "section": "LR", "examWeight": 0.04 },
-    { "id": "lr_point_at_issue", "name": "Point at Issue", "section": "LR", "examWeight": 0.02 },
-    { "id": "lr_role_in_argument", "name": "Role in Argument", "section": "LR", "examWeight": 0.03 },
-    { "id": "lr_evaluate", "name": "Evaluate the Argument", "section": "LR", "examWeight": 0.02 },
-    { "id": "rc_main_point", "name": "RC Main Point", "section": "RC", "examWeight": 0.06 },
-    { "id": "rc_primary_purpose", "name": "RC Primary Purpose", "section": "RC", "examWeight": 0.06 },
-    { "id": "rc_inference", "name": "RC Inference", "section": "RC", "examWeight": 0.08 },
-    { "id": "rc_detail", "name": "RC Detail / Lookup", "section": "RC", "examWeight": 0.05 },
-    { "id": "rc_author_attitude", "name": "RC Author's Attitude", "section": "RC", "examWeight": 0.04 },
-    { "id": "rc_function", "name": "RC Function", "section": "RC", "examWeight": 0.03 },
-    { "id": "concept_conditional_logic", "name": "Conditional Logic", "section": "concept", "examWeight": 0.0 },
-    { "id": "concept_causal_reasoning", "name": "Causal Reasoning", "section": "concept", "examWeight": 0.0 },
-    { "id": "concept_argument_structure", "name": "Argument Structure", "section": "concept", "examWeight": 0.0 }
+    {
+      "id": "lr_necessary_assumption",
+      "name": "Necessary Assumption",
+      "section": "LR",
+      "examWeight": 0.09
+    },
+    {
+      "id": "lr_sufficient_assumption",
+      "name": "Sufficient Assumption",
+      "section": "LR",
+      "examWeight": 0.04
+    },
+    {
+      "id": "lr_strengthen",
+      "name": "Strengthen",
+      "section": "LR",
+      "examWeight": 0.07
+    },
+    {
+      "id": "lr_weaken",
+      "name": "Weaken",
+      "section": "LR",
+      "examWeight": 0.08
+    },
+    {
+      "id": "lr_flaw",
+      "name": "Flaw in the Reasoning",
+      "section": "LR",
+      "examWeight": 0.1
+    },
+    {
+      "id": "lr_inference",
+      "name": "Inference / Must Be True",
+      "section": "LR",
+      "examWeight": 0.09
+    },
+    {
+      "id": "lr_main_conclusion",
+      "name": "Main Conclusion",
+      "section": "LR",
+      "examWeight": 0.04
+    },
+    {
+      "id": "lr_method_of_reasoning",
+      "name": "Method of Reasoning",
+      "section": "LR",
+      "examWeight": 0.04
+    },
+    {
+      "id": "lr_parallel_reasoning",
+      "name": "Parallel Reasoning",
+      "section": "LR",
+      "examWeight": 0.04
+    },
+    {
+      "id": "lr_principle",
+      "name": "Principle",
+      "section": "LR",
+      "examWeight": 0.05
+    },
+    {
+      "id": "lr_paradox",
+      "name": "Resolve the Paradox",
+      "section": "LR",
+      "examWeight": 0.04
+    },
+    {
+      "id": "lr_point_at_issue",
+      "name": "Point at Issue",
+      "section": "LR",
+      "examWeight": 0.02
+    },
+    {
+      "id": "lr_role_in_argument",
+      "name": "Role in Argument",
+      "section": "LR",
+      "examWeight": 0.03
+    },
+    {
+      "id": "lr_evaluate",
+      "name": "Evaluate the Argument",
+      "section": "LR",
+      "examWeight": 0.02
+    },
+    {
+      "id": "rc_main_point",
+      "name": "RC Main Point",
+      "section": "RC",
+      "examWeight": 0.06
+    },
+    {
+      "id": "rc_primary_purpose",
+      "name": "RC Primary Purpose",
+      "section": "RC",
+      "examWeight": 0.06
+    },
+    {
+      "id": "rc_inference",
+      "name": "RC Inference",
+      "section": "RC",
+      "examWeight": 0.08
+    },
+    {
+      "id": "rc_detail",
+      "name": "RC Detail / Lookup",
+      "section": "RC",
+      "examWeight": 0.05
+    },
+    {
+      "id": "rc_author_attitude",
+      "name": "RC Author's Attitude",
+      "section": "RC",
+      "examWeight": 0.04
+    },
+    {
+      "id": "rc_function",
+      "name": "RC Function",
+      "section": "RC",
+      "examWeight": 0.03
+    },
+    {
+      "id": "concept_conditional_logic",
+      "name": "Conditional Logic",
+      "section": "concept",
+      "examWeight": 0.0
+    },
+    {
+      "id": "concept_causal_reasoning",
+      "name": "Causal Reasoning",
+      "section": "concept",
+      "examWeight": 0.0
+    },
+    {
+      "id": "concept_argument_structure",
+      "name": "Argument Structure",
+      "section": "concept",
+      "examWeight": 0.0
+    }
   ],
   "cards": [
-    { "id": "c_lr_necassum", "type": "concept", "tags": ["lsat::lr::necessary_assumption", "lsat::concept::assumption"], "front": "In Logical Reasoning, what does a Necessary Assumption question ask you to find?", "back": "An unstated premise the argument REQUIRES to be true. If it were false, the argument would fall apart. Test it with the Negation Test: negate the answer choice \u2014 if the argument collapses, that choice is a necessary assumption.", "source": "khan_lsat" },
-    { "id": "c_lr_suffassum", "type": "concept", "tags": ["lsat::lr::sufficient_assumption", "lsat::concept::conditional_logic"], "front": "What does a Sufficient Assumption question ask for?", "back": "An assumption that, if added to the premises, would GUARANTEE the conclusion (make the argument valid). It need not be required \u2014 it just has to be enough to force the conclusion.", "source": "khan_lsat" },
-    { "id": "c_lr_strengthen", "type": "concept", "tags": ["lsat::lr::strengthen"], "front": "Goal of a Strengthen question?", "back": "Pick the choice that makes the conclusion MORE likely to be true \u2014 usually by supporting a key assumption or ruling out an alternative explanation.", "source": "khan_lsat" },
-    { "id": "c_lr_weaken", "type": "concept", "tags": ["lsat::lr::weaken"], "front": "Goal of a Weaken question?", "back": "Pick the choice that makes the conclusion LESS likely \u2014 typically by attacking the link between premises and conclusion (the assumption) or offering an alternative explanation.", "source": "khan_lsat" },
-    { "id": "c_lr_flaw", "type": "concept", "tags": ["lsat::lr::flaw"], "front": "What does a Flaw question ask you to do?", "back": "Identify and describe (abstractly) the logical error in the argument's reasoning \u2014 e.g., confusing correlation with causation, attacking the person, or treating a sufficient condition as necessary.", "source": "wiki_fallacies" },
-    { "id": "c_lr_inference", "type": "concept", "tags": ["lsat::lr::inference"], "front": "What must an answer to an Inference / Must Be True question satisfy?", "back": "It must be supported entirely by the stimulus, using no outside assumptions. If the statements are true, the correct answer MUST also be true.", "source": "khan_lsat" },
-    { "id": "c_lr_mainconc", "type": "concept", "tags": ["lsat::lr::main_conclusion", "lsat::concept::argument_structure"], "front": "How do you find the Main Conclusion of an argument?", "back": "It is the claim the argument is trying to establish \u2014 not a premise and not background. The 'Why?' test: the conclusion is supported BY the premises; it does not support anything else.", "source": "khan_lsat" },
-    { "id": "c_lr_method", "type": "concept", "tags": ["lsat::lr::method_of_reasoning"], "front": "What does a Method of Reasoning question ask?", "back": "Describe HOW the argument proceeds \u2014 its structure or technique \u2014 in abstract terms (e.g., 'rejects a hypothesis by presenting a counterexample').", "source": "lsac_lsat" },
-    { "id": "c_lr_parallel", "type": "concept", "tags": ["lsat::lr::parallel_reasoning"], "front": "What are you matching in a Parallel Reasoning question?", "back": "The logical STRUCTURE of the argument (and whether it is valid/invalid) \u2014 not the topic. Match the pattern of premises and conclusion.", "source": "lsac_lsat" },
-    { "id": "c_lr_principle", "type": "concept", "tags": ["lsat::lr::principle"], "front": "What is a Principle question?", "back": "It asks you to identify a general rule that justifies the argument, or to APPLY a stated general rule to a specific case.", "source": "lsac_lsat" },
-    { "id": "c_lr_paradox", "type": "concept", "tags": ["lsat::lr::paradox"], "front": "What does a Resolve the Paradox question ask?", "back": "Find the choice that explains how two seemingly conflicting facts can BOTH be true \u2014 without denying either fact.", "source": "lsac_lsat" },
-    { "id": "c_lr_role", "type": "concept", "tags": ["lsat::lr::role_in_argument", "lsat::concept::argument_structure"], "front": "What does a Role in the Argument question ask?", "back": "Identify the function a specified statement plays \u2014 e.g., main conclusion, premise/support, intermediate conclusion, or a view the author opposes.", "source": "lsac_lsat" },
-    { "id": "c_lr_pointatissue", "type": "concept", "tags": ["lsat::lr::point_at_issue"], "front": "What does a Point at Issue question ask?", "back": "Identify the claim that two speakers would DISAGREE about \u2014 one would accept it and the other would reject it.", "source": "lsac_lsat" },
-    { "id": "c_lr_evaluate", "type": "concept", "tags": ["lsat::lr::evaluate"], "front": "What does an Evaluate the Argument question ask?", "back": "Find the question whose answer would most help you judge whether the argument is strong or weak (often by testing a key assumption).", "source": "lsac_lsat" },
-    { "id": "c_cond_necsuff", "type": "concept", "tags": ["lsat::concept::conditional_logic"], "front": "In 'If A then B', which term is sufficient and which is necessary?", "back": "A is SUFFICIENT for B (A guarantees B). B is NECESSARY for A (A cannot happen without B). Sufficient triggers; necessary is required.", "source": "wiki_nec_suff" },
-    { "id": "c_cond_contrapositive", "type": "concept", "tags": ["lsat::concept::conditional_logic", "lsat::concept::contrapositive"], "front": "What is the contrapositive of 'If A then B', and is it valid?", "back": "The contrapositive is 'If not B then not A'. It is logically equivalent to the original \u2014 always valid.", "source": "wiki_contraposition" },
-    { "id": "c_cond_onlyif", "type": "concept", "tags": ["lsat::concept::conditional_logic"], "front": "How do you translate 'A only if B'?", "back": "'A only if B' means A \u2192 B (B is necessary for A). 'Only if' introduces the NECESSARY condition.", "source": "forallx" },
-    { "id": "c_cond_unless", "type": "concept", "tags": ["lsat::concept::conditional_logic"], "front": "How do you translate 'A unless B'?", "back": "'A unless B' means 'if not B, then A' (\u00acB \u2192 A), equivalently 'A or B'. Treat 'unless' as 'if not'.", "source": "forallx" },
-    { "id": "c_cond_quantifiers", "type": "concept", "tags": ["lsat::concept::quantifiers"], "front": "What do 'all', 'most', and 'some' mean precisely on the LSAT?", "back": "All = 100%. Most = more than half (>50%). Some = at least one (\u22651). 'Some' does NOT mean 'not all'.", "source": "forallx" },
-    { "id": "c_flaw_corr_cause", "type": "concept", "tags": ["lsat::lr::flaw", "lsat::flaw::correlation_vs_causation", "lsat::concept::causal_reasoning"], "front": "Why is inferring causation from correlation a flaw?", "back": "Two things occurring together does not show one causes the other. Possible alternatives: a third common cause, reverse causation, or coincidence.", "source": "wiki_corr_causation" },
-    { "id": "c_causal_weaken", "type": "concept", "tags": ["lsat::concept::causal_reasoning", "lsat::lr::weaken"], "front": "Three classic ways to weaken a causal argument (X causes Y)?", "back": "1) Show an alternative cause of Y. 2) Show the causation is reversed (Y causes X). 3) Show X without Y, or Y without X.", "source": "wiki_corr_causation" },
-    { "id": "c_flaw_adhom", "type": "concept", "tags": ["lsat::lr::flaw", "lsat::flaw::ad_hominem"], "front": "What is an ad hominem flaw?", "back": "Rejecting an argument by attacking the person making it (their character, motives, or circumstances) rather than addressing the argument itself.", "source": "wiki_fallacies" },
-    { "id": "c_flaw_circular", "type": "concept", "tags": ["lsat::lr::flaw", "lsat::flaw::circular"], "front": "What is circular reasoning (begging the question)?", "back": "Using the conclusion itself as a premise \u2014 assuming what you are trying to prove.", "source": "wiki_fallacies" },
-    { "id": "c_flaw_equivocation", "type": "concept", "tags": ["lsat::lr::flaw", "lsat::flaw::equivocation"], "front": "What is equivocation?", "back": "Using a single word or phrase in two different senses within one argument, making it look valid when it is not.", "source": "wiki_fallacies" },
-    { "id": "c_flaw_sample", "type": "concept", "tags": ["lsat::lr::flaw", "lsat::flaw::unrepresentative_sample"], "front": "What is the unrepresentative-sample flaw?", "back": "Drawing a general conclusion from a sample that is too small or biased to represent the whole population.", "source": "wiki_fallacies" },
-    { "id": "c_flaw_affirm_conseq", "type": "concept", "tags": ["lsat::lr::flaw", "lsat::flaw::affirming_consequent", "lsat::concept::conditional_logic"], "front": "What is 'affirming the consequent'?", "back": "From 'A \u2192 B' and 'B', wrongly concluding 'A'. Invalid: B can occur for other reasons.", "source": "wiki_affirming_consequent" },
-    { "id": "c_flaw_deny_antec", "type": "concept", "tags": ["lsat::lr::flaw", "lsat::flaw::denying_antecedent", "lsat::concept::conditional_logic"], "front": "What is 'denying the antecedent'?", "back": "From 'A \u2192 B' and 'not A', wrongly concluding 'not B'. Invalid: B can still occur via another route.", "source": "wiki_denying_antecedent" },
-    { "id": "c_flaw_partwhole", "type": "concept", "tags": ["lsat::lr::flaw", "lsat::flaw::part_whole"], "front": "What are the composition and division flaws?", "back": "Composition: assuming what is true of the parts is true of the whole. Division: assuming what is true of the whole is true of each part.", "source": "wiki_fallacies" },
-    { "id": "c_flaw_falsedilemma", "type": "concept", "tags": ["lsat::lr::flaw", "lsat::flaw::false_dilemma"], "front": "What is a false dilemma?", "back": "Presenting only two options as if they were the only possibilities when others exist.", "source": "wiki_fallacies" },
-    { "id": "c_flaw_strawman", "type": "concept", "tags": ["lsat::lr::flaw", "lsat::flaw::straw_man"], "front": "What is a straw man flaw?", "back": "Misrepresenting or oversimplifying someone's position so it is easier to attack, then refuting the distorted version.", "source": "wiki_fallacies" },
-    { "id": "c_struct_indicators", "type": "concept", "tags": ["lsat::concept::argument_structure"], "front": "Common premise vs conclusion indicator words?", "back": "Premise indicators: because, since, for, given that. Conclusion indicators: therefore, thus, hence, so, consequently.", "source": "khan_lsat" },
-    { "id": "c_rc_mainpoint", "type": "concept", "tags": ["lsat::rc::main_point"], "front": "What does an RC Main Point question ask?", "back": "Identify the passage's central thesis \u2014 the single claim that captures what the whole passage is primarily arguing or conveying.", "source": "lsac_lsat" },
-    { "id": "c_rc_purpose", "type": "concept", "tags": ["lsat::rc::primary_purpose"], "front": "How is RC Primary Purpose phrased and answered?", "back": "It asks WHY the author wrote the passage. Answer with an action verb: to argue, to explain, to describe, to compare, to refute.", "source": "lsac_lsat" },
-    { "id": "c_rc_attitude", "type": "concept", "tags": ["lsat::rc::author_attitude"], "front": "What is an RC Author's Attitude question?", "back": "Identify the author's stance toward the subject (e.g., supportive, critical, skeptical, neutral), based on tone and word choice.", "source": "lsac_lsat" },
-    { "id": "c_rc_function", "type": "concept", "tags": ["lsat::rc::function"], "front": "What does an RC Function question ask?", "back": "Why a specific detail, sentence, or paragraph is included \u2014 its ROLE in the passage (e.g., to give an example, to raise an objection).", "source": "lsac_lsat" },
-
-    { "id": "p_necassum_library", "type": "practice", "tags": ["lsat::lr::necessary_assumption", "lsat::concept::assumption"], "stimulus": "The city library should extend its weekend hours. A recent survey shows that most residents who work full-time cannot visit during the library's current weekday-evening hours.", "question": "The argument depends on assuming which one of the following?", "choices": ["Most residents of the city work full-time.", "Full-time workers who cannot currently visit would use the library if weekend hours were added.", "The library has enough funding to extend its hours.", "Most libraries in other cities offer weekend hours.", "No full-time worker has ever visited the library on a weekday evening."], "answerIndex": 1, "explanation": "Negation test: if those workers would NOT visit even with weekend hours, extending hours would not serve them and the recommendation collapses \u2014 so (B) is required. (A) and (D) are not needed; (C) is a separate practical issue; (E) is too extreme.", "source": "khan_lsat" },
-    { "id": "p_weaken_breakfast", "type": "practice", "tags": ["lsat::lr::weaken", "lsat::flaw::correlation_vs_causation", "lsat::concept::causal_reasoning"], "stimulus": "Students who eat breakfast score higher on exams than students who skip it. Therefore, eating breakfast improves exam performance.", "question": "Which one of the following, if true, most weakens the argument?", "choices": ["A few students who skip breakfast still score well.", "Well-organized students tend both to eat breakfast and to study more, and studying raises scores.", "Breakfast supplies energy that the brain uses during testing.", "The comparison was based on thousands of students.", "Eating a large lunch has no effect on exam scores."], "answerIndex": 1, "explanation": "(B) offers a common cause (being organized) that explains both eating breakfast and higher scores, undermining the claim that breakfast itself improves performance. (C) strengthens; (A), (D), (E) do not address the causal link.", "source": "wiki_corr_causation" },
-    { "id": "p_flaw_adhom_bike", "type": "practice", "tags": ["lsat::lr::flaw", "lsat::flaw::ad_hominem"], "stimulus": "Dr. Lee argues that the city should add bike lanes to reduce traffic. But Dr. Lee is an avid cyclist, so we should reject her recommendation.", "question": "The reasoning above is most vulnerable to criticism on the grounds that it", "choices": ["relies on a sample that is too small", "rejects a claim by attacking its source rather than its substance", "confuses a necessary condition with a sufficient one", "assumes the very point it is trying to establish", "treats two options as the only possibilities"], "answerIndex": 1, "explanation": "The argument dismisses the recommendation because of who made it (an avid cyclist) instead of evaluating the recommendation \u2014 a classic ad hominem.", "source": "wiki_fallacies" },
-    { "id": "p_inference_budget", "type": "practice", "tags": ["lsat::lr::inference", "lsat::concept::conditional_logic", "lsat::concept::contrapositive"], "stimulus": "If the measure passes, the budget will be balanced. The budget will not be balanced.", "question": "Which one of the following must be true?", "choices": ["The measure passed.", "The measure did not pass.", "If the budget is balanced, the measure passed.", "The measure balances the budget only if it passes.", "The budget can never be balanced."], "answerIndex": 1, "explanation": "Contrapositive of 'pass \u2192 balanced' is 'not balanced \u2192 not pass'. Given the budget is not balanced, the measure did not pass.", "source": "wiki_contraposition" },
-    { "id": "p_mainconc_supplements", "type": "practice", "tags": ["lsat::lr::main_conclusion", "lsat::concept::argument_structure"], "stimulus": "Many people believe vitamin supplements improve health. However, most studies find no benefit for people who already eat a balanced diet. So, for most people, supplements are an unnecessary expense.", "question": "Which one of the following most accurately expresses the main conclusion?", "choices": ["Many people believe supplements improve health.", "Most studies find no benefit for people with balanced diets.", "For most people, supplements are an unnecessary expense.", "Vitamin supplements are harmful to health.", "People should focus on improving their diets."], "answerIndex": 2, "explanation": "(A) is a view the author pushes back on; (B) is the supporting evidence; (C) is the claim those premises are offered to support \u2014 the main conclusion. (D) and (E) are not stated.", "source": "khan_lsat" },
-    { "id": "p_strengthen_fourday", "type": "practice", "tags": ["lsat::lr::strengthen", "lsat::concept::causal_reasoning"], "stimulus": "After a company switched to a four-day workweek, productivity rose 10%. The company concluded that the shorter week caused the increase.", "question": "Which one of the following, if true, most strengthens the conclusion?", "choices": ["Employees reported feeling more rested.", "A comparable company that kept its five-day week saw no productivity change over the same period.", "The company hired ten new employees during the same period.", "Productivity is difficult to measure precisely.", "Some employees preferred the old five-day schedule."], "answerIndex": 1, "explanation": "(B) rules out a general time trend by showing a similar company without the change saw no rise, supporting that the four-day week caused the increase. (C) introduces an alternative cause (weakens).", "source": "wiki_corr_causation" },
-    { "id": "p_paradox_schools", "type": "practice", "tags": ["lsat::lr::paradox"], "stimulus": "City A spends far more per student on its schools than City B does, yet City B's students consistently outscore City A's on standardized tests.", "question": "Which one of the following, if true, most helps to resolve the apparent discrepancy?", "choices": ["City A enrolls more students than City B.", "Families in City B have, on average, higher incomes and more educational resources at home.", "Both cities administer the same standardized test.", "City A increased its school budget only last year.", "Standardized tests measure only a portion of student ability."], "answerIndex": 1, "explanation": "(B) supplies an out-of-school factor (home resources) that can explain why City B scores higher despite lower school spending, reconciling the two facts.", "source": "lsac_lsat" },
-    { "id": "p_suffassum_tax", "type": "practice", "tags": ["lsat::lr::sufficient_assumption", "lsat::concept::conditional_logic"], "stimulus": "If a policy increases employment, it benefits the economy. The new tax policy will increase employment. Therefore, the new tax policy is worth adopting.", "question": "The conclusion follows logically if which one of the following is assumed?", "choices": ["Any policy that benefits the economy is worth adopting.", "Some policies that benefit the economy are worth adopting.", "The tax policy will benefit the economy.", "Every policy worth adopting increases employment.", "Increasing employment is the only way to benefit the economy."], "answerIndex": 0, "explanation": "We can derive 'benefits the economy'. To force 'worth adopting', we need the bridge 'benefits economy \u2192 worth adopting', which is (A). (B) is too weak; (C) is already derivable but insufficient.", "source": "forallx" },
-    { "id": "p_parallel_choir", "type": "practice", "tags": ["lsat::lr::parallel_reasoning", "lsat::concept::conditional_logic", "lsat::concept::contrapositive"], "stimulus": "All members of the choir can read music. Jordan cannot read music. So Jordan is not a member of the choir.", "question": "Which one of the following arguments is most similar in its reasoning to the argument above?", "choices": ["All cats are mammals. Whiskers is a mammal. So Whiskers is a cat.", "All doctors have degrees. Sam has no degree. So Sam is not a doctor.", "Most athletes train daily. Pat trains daily. So Pat is an athlete.", "No reptiles have fur. Snakes are reptiles. So snakes have fur.", "Some teachers are tall. Lee is tall. So Lee is a teacher."], "answerIndex": 1, "explanation": "The original is a valid contrapositive: All M are R; x lacks R; so x is not M. (B) matches exactly. (A) and (E) affirm the consequent; (C) is a 'most' fallacy; (D) is self-contradictory.", "source": "wiki_contraposition" },
-    { "id": "p_flaw_sample_magazine", "type": "practice", "tags": ["lsat::lr::flaw", "lsat::flaw::unrepresentative_sample"], "stimulus": "A pet magazine surveyed its own readers and found that 90% favor stricter leash laws. The magazine concluded that 90% of the city's residents favor stricter leash laws.", "question": "The argument is most vulnerable to criticism on the grounds that it", "choices": ["treats a sufficient condition as a necessary one", "draws a conclusion about all residents from a sample likely to be unrepresentative", "relies on the testimony of authorities outside their expertise", "assumes the conclusion it sets out to prove", "confuses correlation with causation"], "answerIndex": 1, "explanation": "The magazine's readers (pet owners/enthusiasts) are not representative of all city residents, so generalizing to everyone is unjustified.", "source": "wiki_fallacies" },
-    { "id": "p_role_recycling", "type": "practice", "tags": ["lsat::lr::role_in_argument", "lsat::concept::argument_structure"], "stimulus": "Recycling programs are often criticized as costly. But they reduce landfill use, which lowers long-term disposal costs. Therefore, recycling programs can save money over time.", "question": "The claim that recycling reduces landfill use plays which one of the following roles in the argument?", "choices": ["It is the argument's main conclusion.", "It is a premise offered in support of the conclusion that recycling can save money.", "It is a position the argument sets out to reject.", "It is an unstated assumption.", "It merely restates the conclusion in different words."], "answerIndex": 1, "explanation": "Reducing landfill use is given as support (a premise) for the main conclusion that recycling can save money over time.", "source": "khan_lsat" },
-    { "id": "p_principle_blame", "type": "practice", "tags": ["lsat::lr::principle"], "stimulus": "Principle: A person should not be blamed for an outcome that they could not reasonably have foreseen. Case: Maria lent her car to a friend who had a valid license and a clean driving record; the friend then caused an accident due to a sudden, undetectable brake failure.", "question": "The principle, if valid, most supports which one of the following judgments?", "choices": ["Maria should be blamed because she lent out her car.", "Maria should not be blamed for the accident.", "The friend should never be blamed under any circumstances.", "Maria should be blamed only if the car was old.", "No one bears any responsibility for the accident."], "answerIndex": 1, "explanation": "Maria could not reasonably have foreseen a sudden, undetectable brake failure, so by the principle she should not be blamed for the accident. The principle speaks only to Maria's foreseeability, so (C) and (E) overreach.", "source": "lsac_lsat" },
-    { "id": "p_method_cities", "type": "practice", "tags": ["lsat::lr::method_of_reasoning", "lsat::concept::argument_structure"], "stimulus": "Critic: The new policy cannot reduce crime. Cities that adopted similar policies saw no drop in crime, and our city is not meaningfully different from those cities.", "question": "The critic's argument proceeds by", "choices": ["appealing to the testimony of experts", "drawing a conclusion about one case from the results of closely analogous cases", "pointing out an internal contradiction in an opposing view", "defining a key term and then applying it", "rejecting a claim merely because of its source"], "answerIndex": 1, "explanation": "The critic reasons by analogy: because similar cities saw no effect and our city is relevantly similar, the policy will not work here.", "source": "lsac_lsat" },
-    { "id": "p_method_hours", "type": "practice", "tags": ["lsat::lr::method_of_reasoning"], "stimulus": "Manager: Some say longer hours boost output. But when we extended hours last year, output per employee actually fell. So longer hours do not boost output here.", "question": "The manager responds to the claim by", "choices": ["presenting a counterexample drawn from the company's own experience", "attacking the character of those who made the claim", "appealing to a general principle about fairness", "showing that the claim is self-contradictory", "redefining the term output"], "answerIndex": 0, "explanation": "The manager rebuts the general claim with a specific counterexample from the company's own trial of longer hours.", "source": "lsac_lsat" },
-    { "id": "p_pointissue_library", "type": "practice", "tags": ["lsat::lr::point_at_issue"], "stimulus": "Ana: We should fund the new library branch; access to books improves literacy. Ben: Literacy matters, but the city budget cannot support a new branch right now.", "question": "Ana and Ben disagree over whether", "choices": ["literacy is important", "the city should fund the new library branch now", "books improve literacy", "the city has a budget", "libraries provide access to books"], "answerIndex": 1, "explanation": "Ana endorses funding the branch now; Ben opposes it on budget grounds. That is the claim they would answer differently.", "source": "lsac_lsat" },
-    { "id": "p_pointissue_drug", "type": "practice", "tags": ["lsat::lr::point_at_issue"], "stimulus": "Researcher 1: The drug is safe; trials showed no serious side effects. Researcher 2: The trials were too short to reveal long-term effects, so we cannot yet call it safe.", "question": "The point at issue between the researchers is whether", "choices": ["the drug had any side effects during the trials", "the trials were actually conducted", "the drug can currently be considered safe", "long-term effects are possible for any drug", "the drug is effective"], "answerIndex": 2, "explanation": "They disagree about whether the drug can be called safe now; Researcher 2 says the evidence so far is insufficient.", "source": "lsac_lsat" },
-    { "id": "p_evaluate_toothpaste", "type": "practice", "tags": ["lsat::lr::evaluate", "lsat::concept::causal_reasoning"], "stimulus": "Advertisement: People who use our toothpaste have fewer cavities than people who do not. So our toothpaste prevents cavities.", "question": "The answer to which one of the following would be most useful in evaluating the argument?", "choices": ["How many people use the toothpaste?", "Do toothpaste users also differ in diet or dental-care habits that affect cavities?", "What flavor is the toothpaste?", "How long has the brand existed?", "Is the toothpaste expensive?"], "answerIndex": 1, "explanation": "The argument assumes no alternative cause. Whether users differ in other cavity-affecting ways directly tests that assumption.", "source": "wiki_corr_causation" },
-    { "id": "p_evaluate_speedbumps", "type": "practice", "tags": ["lsat::lr::evaluate"], "stimulus": "Town official: Installing speed bumps will make Main Street safer, because accidents fell on Oak Street after speed bumps were added there.", "question": "The answer to which one of the following would most help to evaluate the official's reasoning?", "choices": ["Are Main Street and Oak Street similar in traffic and in the causes of their accidents?", "How much do speed bumps cost?", "Who installed the Oak Street speed bumps?", "How many cars use Oak Street?", "Is Main Street longer than Oak Street?"], "answerIndex": 0, "explanation": "The argument rests on an analogy between the streets; whether they are relevantly similar determines whether the analogy holds.", "source": "lsac_lsat" },
-    { "id": "p_necassum_museum", "type": "practice", "tags": ["lsat::lr::necessary_assumption", "lsat::concept::assumption"], "stimulus": "The museum should display the painting in natural light, because natural light reveals the artist's color choices more faithfully than artificial light does.", "question": "The argument depends on assuming which one of the following?", "choices": ["Displaying the painting faithfully to the artist's color choices is desirable.", "Artificial light damages paintings.", "All visitors prefer natural light.", "The painting contains many colors.", "Natural light costs nothing."], "answerIndex": 0, "explanation": "Negation test: if faithful display of the artist's colors were not desirable, the stated reason would no longer support the recommendation.", "source": "khan_lsat" },
-    { "id": "p_suffassum_book", "type": "practice", "tags": ["lsat::lr::sufficient_assumption", "lsat::concept::conditional_logic"], "stimulus": "If a book is well-researched, it is trustworthy. This book is well-researched. Therefore, this book should be assigned in class.", "question": "The conclusion follows logically if which one of the following is assumed?", "choices": ["Any trustworthy book should be assigned in class.", "Some trustworthy books should be assigned in class.", "Well-researched books are rare.", "This book is trustworthy.", "Books assigned in class are trustworthy."], "answerIndex": 0, "explanation": "We can derive that the book is trustworthy; the bridge trustworthy -> should be assigned forces the conclusion. (D) is already derivable but not enough.", "source": "forallx" },
-    { "id": "p_strengthen_entrance", "type": "practice", "tags": ["lsat::lr::strengthen", "lsat::concept::causal_reasoning"], "stimulus": "A store moved its entrance and sales rose 15%. The owner concludes that the new entrance caused the increase.", "question": "Which one of the following, if true, most strengthens the conclusion?", "choices": ["Foot traffic past the store was unchanged over the period.", "The store also cut prices that month.", "Customers say they like the new entrance.", "Sales are measured monthly.", "The old entrance was rarely photographed."], "answerIndex": 0, "explanation": "Holding foot traffic constant rules out a major alternative explanation, supporting that the entrance change caused the rise. (B) introduces an alternative cause.", "source": "wiki_corr_causation" },
-    { "id": "p_weaken_afterschool", "type": "practice", "tags": ["lsat::lr::weaken", "lsat::concept::causal_reasoning"], "stimulus": "Our after-school program improves grades: students in the program have higher GPAs than students who are not in it.", "question": "Which one of the following, if true, most weakens the argument?", "choices": ["Students who choose to join the program already had higher grades before joining.", "The program meets twice a week.", "A few students in the program have low GPAs.", "GPA is measured on a 4.0 scale.", "The program is offered free of charge."], "answerIndex": 0, "explanation": "If higher-achieving students self-select into the program, the GPA gap may reflect who joins, not the program's effect.", "source": "wiki_corr_causation" },
-    { "id": "p_inference_debate", "type": "practice", "tags": ["lsat::lr::inference", "lsat::concept::conditional_logic"], "stimulus": "Every member of the debate team is also in the honor society. No one in the honor society failed the exam.", "question": "If the statements above are true, which one of the following must be true?", "choices": ["No member of the debate team failed the exam.", "Everyone in the honor society is on the debate team.", "Some honor society members are not on the debate team.", "Everyone who passed the exam is on the debate team.", "Some debate team members failed the exam."], "answerIndex": 0, "explanation": "Debate team is a subset of the honor society, and no honor-society member failed, so no debate-team member failed.", "source": "forallx" },
-    { "id": "p_mainconc_festival", "type": "practice", "tags": ["lsat::lr::main_conclusion", "lsat::concept::argument_structure"], "stimulus": "Critics claim the festival is too expensive. But it draws thousands of visitors who spend money downtown. Thus the festival is worth its cost.", "question": "Which one of the following most accurately expresses the main conclusion?", "choices": ["The festival is too expensive.", "The festival draws thousands of visitors.", "The festival is worth its cost.", "Visitors spend money downtown.", "The critics are mistaken about everything."], "answerIndex": 2, "explanation": "(A) is the view being rebutted; (B) and (D) are premises; (C) is the claim those premises support.", "source": "khan_lsat" },
-    { "id": "p_parallel_rain", "type": "practice", "tags": ["lsat::lr::parallel_reasoning", "lsat::concept::conditional_logic", "lsat::concept::contrapositive"], "stimulus": "If it rains, the game is canceled. The game was not canceled. So it did not rain.", "question": "Which one of the following is most similar in its reasoning to the argument above?", "choices": ["If the alarm rings, there is smoke. The alarm did not ring. So there is no smoke.", "If the switch is on, the light is on. The light is not on. So the switch is not on.", "If she studies, she passes. She passed. So she studied.", "Most birds fly. Penguins are birds. So penguins fly.", "If A then B. A is true. So B is true."], "answerIndex": 1, "explanation": "The original is a valid contrapositive (modus tollens): A->B, not B, so not A. (B) matches. (A) denies the antecedent; (C) affirms the consequent.", "source": "wiki_contraposition" },
-    { "id": "p_principle_promise", "type": "practice", "tags": ["lsat::lr::principle"], "stimulus": "Principle: One should keep a promise unless doing so would cause serious harm. Case: Sam promised to drive a friend to the airport, but on the way notices the brakes failing dangerously.", "question": "The principle most supports which one of the following judgments?", "choices": ["Sam must continue driving in order to keep the promise.", "Sam may stop driving, since continuing would risk serious harm.", "Sam should never make promises.", "Sam must keep the promise only if the friend pays for gas.", "Promises are never binding."], "answerIndex": 1, "explanation": "Continuing risks serious harm, which the principle treats as overriding the duty to keep the promise.", "source": "lsac_lsat" },
-    { "id": "p_paradox_bus", "type": "practice", "tags": ["lsat::lr::paradox"], "stimulus": "After the city doubled the frequency of its bus service, total bus ridership stayed exactly the same.", "question": "Which one of the following, if true, most helps to explain this result?", "choices": ["A new subway line opened the same month and drew away many former bus riders.", "Buses are cheaper to ride than subways.", "The city has many bus stops.", "Ridership is counted every day.", "Some of the buses were brand new."], "answerIndex": 0, "explanation": "A competing new option that pulled riders away explains why extra service did not raise net ridership.", "source": "lsac_lsat" },
-    { "id": "p_role_chemical", "type": "practice", "tags": ["lsat::lr::role_in_argument", "lsat::concept::argument_structure"], "stimulus": "Some argue we should ban the chemical. True, it is toxic in large doses. But the doses people actually encounter are far too small to cause harm. So a ban is unwarranted.", "question": "The claim that the chemical is toxic in large doses plays which one of the following roles?", "choices": ["It is the main conclusion of the argument.", "It is a point the argument concedes before arguing against the ban.", "It is the primary evidence offered in favor of a ban.", "It restates the conclusion in other words.", "It is an unsupported assumption the argument needs."], "answerIndex": 1, "explanation": "The author grants the toxicity point as a concession, then argues it does not justify a ban given real-world doses.", "source": "lsac_lsat" },
-    { "id": "p_rc_reef_mainpoint", "type": "practice", "tags": ["lsat::rc::main_point"], "stimulus": "Passage A: Coral reefs are often called the rainforests of the sea, yet the comparison can mislead. Rainforests grow in nutrient-rich soils, whereas reefs thrive in nutrient-poor tropical waters. The reef's productivity comes from a partnership: coral animals host microscopic algae that turn sunlight into food and share it with their hosts. When ocean temperatures rise even slightly, the corals expel these algae and lose their main energy source, a process called bleaching. Some researchers once assumed bleached reefs were dead, but recent studies show that if cooler conditions return quickly, many corals can recover.", "question": "Which one of the following most accurately states the main point of the passage?", "choices": ["Coral reefs obtain nutrients in exactly the same way rainforests do.", "Reef productivity depends on a coral-algae partnership that warming disrupts, though some recovery is possible.", "Bleached reefs are always dead.", "Rainforests grow in nutrient-poor soils.", "Ocean temperatures rarely change."], "answerIndex": 1, "explanation": "The passage centers on the partnership, how warming causes bleaching, and that recovery is sometimes possible.", "source": "lsac_lsat" },
-    { "id": "p_rc_reef_purpose", "type": "practice", "tags": ["lsat::rc::primary_purpose"], "stimulus": "Passage A: Coral reefs are often called the rainforests of the sea, yet the comparison can mislead. Rainforests grow in nutrient-rich soils, whereas reefs thrive in nutrient-poor tropical waters. The reef's productivity comes from a partnership: coral animals host microscopic algae that turn sunlight into food and share it with their hosts. When ocean temperatures rise even slightly, the corals expel these algae and lose their main energy source, a process called bleaching. Some researchers once assumed bleached reefs were dead, but recent studies show that if cooler conditions return quickly, many corals can recover.", "question": "The primary purpose of the passage is to", "choices": ["argue that reefs are more valuable than rainforests", "explain how coral reefs are productive and what happens when waters warm", "criticize researchers for studying reefs", "describe a method for growing rainforests", "prove that every bleached coral recovers"], "answerIndex": 1, "explanation": "The passage explains the reef's productivity mechanism and the effect of warming; it does not argue a value claim or criticize.", "source": "lsac_lsat" },
-    { "id": "p_rc_reef_attitude", "type": "practice", "tags": ["lsat::rc::author_attitude"], "stimulus": "Passage A: Coral reefs are often called the rainforests of the sea, yet the comparison can mislead. Rainforests grow in nutrient-rich soils, whereas reefs thrive in nutrient-poor tropical waters. The reef's productivity comes from a partnership: coral animals host microscopic algae that turn sunlight into food and share it with their hosts. When ocean temperatures rise even slightly, the corals expel these algae and lose their main energy source, a process called bleaching. Some researchers once assumed bleached reefs were dead, but recent studies show that if cooler conditions return quickly, many corals can recover.", "question": "The author's attitude toward the claim that bleached reefs are dead is best described as", "choices": ["complete agreement", "qualified skepticism, since recovery is sometimes possible", "hostility toward all researchers", "total indifference", "certainty that no reef ever recovers"], "answerIndex": 1, "explanation": "The phrasing once assumed ... but recent studies show signals the author qualifies and pushes back on that claim.", "source": "lsac_lsat" },
-    { "id": "p_rc_reef_inference", "type": "practice", "tags": ["lsat::rc::inference"], "stimulus": "Passage A: Coral reefs are often called the rainforests of the sea, yet the comparison can mislead. Rainforests grow in nutrient-rich soils, whereas reefs thrive in nutrient-poor tropical waters. The reef's productivity comes from a partnership: coral animals host microscopic algae that turn sunlight into food and share it with their hosts. When ocean temperatures rise even slightly, the corals expel these algae and lose their main energy source, a process called bleaching. Some researchers once assumed bleached reefs were dead, but recent studies show that if cooler conditions return quickly, many corals can recover.", "question": "It can be inferred from the passage that coral bleaching", "choices": ["is caused by nutrient-rich soil", "results from the loss of the algae that supply corals with food", "occurs only in rainforests", "always kills the coral permanently", "increases the reef's energy supply"], "answerIndex": 1, "explanation": "Corals expel the algae that are their main energy source, so bleaching is the loss of that food supply.", "source": "lsac_lsat" },
-    { "id": "p_rc_library_detail", "type": "practice", "tags": ["lsat::rc::detail"], "stimulus": "Passage B: In the nineteenth century, the spread of free public libraries was driven less by a love of literature than by anxieties about a rapidly industrializing society. Reformers argued that libraries would give working people an alternative to the tavern and would cultivate the self-discipline that factory owners prized. Critics, however, warned that unsupervised reading might spread radical ideas. Andrew Carnegie, who funded thousands of library buildings, sided with the reformers, viewing the library as an engine of individual self-improvement. Whatever their motives, these institutions outlasted the debates that produced them.", "question": "According to the passage, critics of public libraries worried that", "choices": ["libraries would force taverns to close", "unsupervised reading might spread radical ideas", "Carnegie funded too few buildings", "working people disliked reading", "libraries cost nothing to build"], "answerIndex": 1, "explanation": "The passage states directly that critics warned unsupervised reading might spread radical ideas.", "source": "lsac_lsat" },
-    { "id": "p_rc_library_function", "type": "practice", "tags": ["lsat::rc::function"], "stimulus": "Passage B: In the nineteenth century, the spread of free public libraries was driven less by a love of literature than by anxieties about a rapidly industrializing society. Reformers argued that libraries would give working people an alternative to the tavern and would cultivate the self-discipline that factory owners prized. Critics, however, warned that unsupervised reading might spread radical ideas. Andrew Carnegie, who funded thousands of library buildings, sided with the reformers, viewing the library as an engine of individual self-improvement. Whatever their motives, these institutions outlasted the debates that produced them.", "question": "The author mentions Andrew Carnegie primarily in order to", "choices": ["give an example of a prominent supporter who saw libraries as self-improvement", "prove that libraries spread radical ideas", "criticize wealthy philanthropists", "explain how taverns operated", "describe library architecture"], "answerIndex": 0, "explanation": "Carnegie is cited as a notable backer who aligned with the reformers' self-improvement view.", "source": "lsac_lsat" },
-    { "id": "p_rc_library_inference", "type": "practice", "tags": ["lsat::rc::inference"], "stimulus": "Passage B: In the nineteenth century, the spread of free public libraries was driven less by a love of literature than by anxieties about a rapidly industrializing society. Reformers argued that libraries would give working people an alternative to the tavern and would cultivate the self-discipline that factory owners prized. Critics, however, warned that unsupervised reading might spread radical ideas. Andrew Carnegie, who funded thousands of library buildings, sided with the reformers, viewing the library as an engine of individual self-improvement. Whatever their motives, these institutions outlasted the debates that produced them.", "question": "The passage suggests that the motives behind founding public libraries were", "choices": ["purely literary", "mixed, including social discipline and self-improvement rather than only a love of reading", "entirely radical", "unknown to historians", "identical to the motives for opening taverns"], "answerIndex": 1, "explanation": "The passage stresses anxieties, self-discipline, and self-improvement over a mere love of literature, implying mixed motives.", "source": "lsac_lsat" }
+    {
+      "id": "c_lr_necassum",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::necessary_assumption",
+        "lsat::concept::assumption"
+      ],
+      "front": "In Logical Reasoning, what does a Necessary Assumption question ask you to find?",
+      "back": "An unstated premise the argument REQUIRES to be true. If it were false, the argument would fall apart. Test it with the Negation Test: negate the answer choice — if the argument collapses, that choice is a necessary assumption.",
+      "source": "khan_lsat"
+    },
+    {
+      "id": "c_lr_suffassum",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::sufficient_assumption",
+        "lsat::concept::conditional_logic"
+      ],
+      "front": "What does a Sufficient Assumption question ask for?",
+      "back": "An assumption that, if added to the premises, would GUARANTEE the conclusion (make the argument valid). It need not be required — it just has to be enough to force the conclusion.",
+      "source": "khan_lsat"
+    },
+    {
+      "id": "c_lr_strengthen",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::strengthen"
+      ],
+      "front": "Goal of a Strengthen question?",
+      "back": "Pick the choice that makes the conclusion MORE likely to be true — usually by supporting a key assumption or ruling out an alternative explanation.",
+      "source": "khan_lsat"
+    },
+    {
+      "id": "c_lr_weaken",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::weaken"
+      ],
+      "front": "Goal of a Weaken question?",
+      "back": "Pick the choice that makes the conclusion LESS likely — typically by attacking the link between premises and conclusion (the assumption) or offering an alternative explanation.",
+      "source": "khan_lsat"
+    },
+    {
+      "id": "c_lr_flaw",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw"
+      ],
+      "front": "What does a Flaw question ask you to do?",
+      "back": "Identify and describe (abstractly) the logical error in the argument's reasoning — e.g., confusing correlation with causation, attacking the person, or treating a sufficient condition as necessary.",
+      "source": "wiki_fallacies"
+    },
+    {
+      "id": "c_lr_inference",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::inference"
+      ],
+      "front": "What must an answer to an Inference / Must Be True question satisfy?",
+      "back": "It must be supported entirely by the stimulus, using no outside assumptions. If the statements are true, the correct answer MUST also be true.",
+      "source": "khan_lsat"
+    },
+    {
+      "id": "c_lr_mainconc",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::main_conclusion",
+        "lsat::concept::argument_structure"
+      ],
+      "front": "How do you find the Main Conclusion of an argument?",
+      "back": "It is the claim the argument is trying to establish — not a premise and not background. The 'Why?' test: the conclusion is supported BY the premises; it does not support anything else.",
+      "source": "khan_lsat"
+    },
+    {
+      "id": "c_lr_method",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::method_of_reasoning"
+      ],
+      "front": "What does a Method of Reasoning question ask?",
+      "back": "Describe HOW the argument proceeds — its structure or technique — in abstract terms (e.g., 'rejects a hypothesis by presenting a counterexample').",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "c_lr_parallel",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::parallel_reasoning"
+      ],
+      "front": "What are you matching in a Parallel Reasoning question?",
+      "back": "The logical STRUCTURE of the argument (and whether it is valid/invalid) — not the topic. Match the pattern of premises and conclusion.",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "c_lr_principle",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::principle"
+      ],
+      "front": "What is a Principle question?",
+      "back": "It asks you to identify a general rule that justifies the argument, or to APPLY a stated general rule to a specific case.",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "c_lr_paradox",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::paradox"
+      ],
+      "front": "What does a Resolve the Paradox question ask?",
+      "back": "Find the choice that explains how two seemingly conflicting facts can BOTH be true — without denying either fact.",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "c_lr_role",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::role_in_argument",
+        "lsat::concept::argument_structure"
+      ],
+      "front": "What does a Role in the Argument question ask?",
+      "back": "Identify the function a specified statement plays — e.g., main conclusion, premise/support, intermediate conclusion, or a view the author opposes.",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "c_lr_pointatissue",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::point_at_issue"
+      ],
+      "front": "What does a Point at Issue question ask?",
+      "back": "Identify the claim that two speakers would DISAGREE about — one would accept it and the other would reject it.",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "c_lr_evaluate",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::evaluate"
+      ],
+      "front": "What does an Evaluate the Argument question ask?",
+      "back": "Find the question whose answer would most help you judge whether the argument is strong or weak (often by testing a key assumption).",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "c_cond_necsuff",
+      "type": "concept",
+      "tags": [
+        "lsat::concept::conditional_logic"
+      ],
+      "front": "In 'If A then B', which term is sufficient and which is necessary?",
+      "back": "A is SUFFICIENT for B (A guarantees B). B is NECESSARY for A (A cannot happen without B). Sufficient triggers; necessary is required.",
+      "source": "wiki_nec_suff"
+    },
+    {
+      "id": "c_cond_contrapositive",
+      "type": "concept",
+      "tags": [
+        "lsat::concept::conditional_logic",
+        "lsat::concept::contrapositive"
+      ],
+      "front": "What is the contrapositive of 'If A then B', and is it valid?",
+      "back": "The contrapositive is 'If not B then not A'. It is logically equivalent to the original — always valid.",
+      "source": "wiki_contraposition"
+    },
+    {
+      "id": "c_cond_onlyif",
+      "type": "concept",
+      "tags": [
+        "lsat::concept::conditional_logic"
+      ],
+      "front": "How do you translate 'A only if B'?",
+      "back": "'A only if B' means A → B (B is necessary for A). 'Only if' introduces the NECESSARY condition.",
+      "source": "forallx"
+    },
+    {
+      "id": "c_cond_unless",
+      "type": "concept",
+      "tags": [
+        "lsat::concept::conditional_logic"
+      ],
+      "front": "How do you translate 'A unless B'?",
+      "back": "'A unless B' means 'if not B, then A' (¬B → A), equivalently 'A or B'. Treat 'unless' as 'if not'.",
+      "source": "forallx"
+    },
+    {
+      "id": "c_cond_quantifiers",
+      "type": "concept",
+      "tags": [
+        "lsat::concept::quantifiers"
+      ],
+      "front": "What do 'all', 'most', and 'some' mean precisely on the LSAT?",
+      "back": "All = 100%. Most = more than half (>50%). Some = at least one (≥1). 'Some' does NOT mean 'not all'.",
+      "source": "forallx"
+    },
+    {
+      "id": "c_flaw_corr_cause",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::correlation_vs_causation",
+        "lsat::concept::causal_reasoning"
+      ],
+      "front": "Why is inferring causation from correlation a flaw?",
+      "back": "Two things occurring together does not show one causes the other. Possible alternatives: a third common cause, reverse causation, or coincidence.",
+      "source": "wiki_corr_causation"
+    },
+    {
+      "id": "c_causal_weaken",
+      "type": "concept",
+      "tags": [
+        "lsat::concept::causal_reasoning",
+        "lsat::lr::weaken"
+      ],
+      "front": "Three classic ways to weaken a causal argument (X causes Y)?",
+      "back": "1) Show an alternative cause of Y. 2) Show the causation is reversed (Y causes X). 3) Show X without Y, or Y without X.",
+      "source": "wiki_corr_causation"
+    },
+    {
+      "id": "c_flaw_adhom",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::ad_hominem"
+      ],
+      "front": "What is an ad hominem flaw?",
+      "back": "Rejecting an argument by attacking the person making it (their character, motives, or circumstances) rather than addressing the argument itself.",
+      "source": "wiki_fallacies"
+    },
+    {
+      "id": "c_flaw_circular",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::circular"
+      ],
+      "front": "What is circular reasoning (begging the question)?",
+      "back": "Using the conclusion itself as a premise — assuming what you are trying to prove.",
+      "source": "wiki_fallacies"
+    },
+    {
+      "id": "c_flaw_equivocation",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::equivocation"
+      ],
+      "front": "What is equivocation?",
+      "back": "Using a single word or phrase in two different senses within one argument, making it look valid when it is not.",
+      "source": "wiki_fallacies"
+    },
+    {
+      "id": "c_flaw_sample",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::unrepresentative_sample"
+      ],
+      "front": "What is the unrepresentative-sample flaw?",
+      "back": "Drawing a general conclusion from a sample that is too small or biased to represent the whole population.",
+      "source": "wiki_fallacies"
+    },
+    {
+      "id": "c_flaw_affirm_conseq",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::affirming_consequent",
+        "lsat::concept::conditional_logic"
+      ],
+      "front": "What is 'affirming the consequent'?",
+      "back": "From 'A → B' and 'B', wrongly concluding 'A'. Invalid: B can occur for other reasons.",
+      "source": "wiki_affirming_consequent"
+    },
+    {
+      "id": "c_flaw_deny_antec",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::denying_antecedent",
+        "lsat::concept::conditional_logic"
+      ],
+      "front": "What is 'denying the antecedent'?",
+      "back": "From 'A → B' and 'not A', wrongly concluding 'not B'. Invalid: B can still occur via another route.",
+      "source": "wiki_denying_antecedent"
+    },
+    {
+      "id": "c_flaw_partwhole",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::part_whole"
+      ],
+      "front": "What are the composition and division flaws?",
+      "back": "Composition: assuming what is true of the parts is true of the whole. Division: assuming what is true of the whole is true of each part.",
+      "source": "wiki_fallacies"
+    },
+    {
+      "id": "c_flaw_falsedilemma",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::false_dilemma"
+      ],
+      "front": "What is a false dilemma?",
+      "back": "Presenting only two options as if they were the only possibilities when others exist.",
+      "source": "wiki_fallacies"
+    },
+    {
+      "id": "c_flaw_strawman",
+      "type": "concept",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::straw_man"
+      ],
+      "front": "What is a straw man flaw?",
+      "back": "Misrepresenting or oversimplifying someone's position so it is easier to attack, then refuting the distorted version.",
+      "source": "wiki_fallacies"
+    },
+    {
+      "id": "c_struct_indicators",
+      "type": "concept",
+      "tags": [
+        "lsat::concept::argument_structure"
+      ],
+      "front": "Common premise vs conclusion indicator words?",
+      "back": "Premise indicators: because, since, for, given that. Conclusion indicators: therefore, thus, hence, so, consequently.",
+      "source": "khan_lsat"
+    },
+    {
+      "id": "c_rc_mainpoint",
+      "type": "concept",
+      "tags": [
+        "lsat::rc::main_point"
+      ],
+      "front": "What does an RC Main Point question ask?",
+      "back": "Identify the passage's central thesis — the single claim that captures what the whole passage is primarily arguing or conveying.",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "c_rc_purpose",
+      "type": "concept",
+      "tags": [
+        "lsat::rc::primary_purpose"
+      ],
+      "front": "How is RC Primary Purpose phrased and answered?",
+      "back": "It asks WHY the author wrote the passage. Answer with an action verb: to argue, to explain, to describe, to compare, to refute.",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "c_rc_attitude",
+      "type": "concept",
+      "tags": [
+        "lsat::rc::author_attitude"
+      ],
+      "front": "What is an RC Author's Attitude question?",
+      "back": "Identify the author's stance toward the subject (e.g., supportive, critical, skeptical, neutral), based on tone and word choice.",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "c_rc_function",
+      "type": "concept",
+      "tags": [
+        "lsat::rc::function"
+      ],
+      "front": "What does an RC Function question ask?",
+      "back": "Why a specific detail, sentence, or paragraph is included — its ROLE in the passage (e.g., to give an example, to raise an objection).",
+      "source": "lsac_lsat"
+    },
+    {
+      "id": "p_necassum_library",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::necessary_assumption",
+        "lsat::concept::assumption"
+      ],
+      "stimulus": "The city library should extend its weekend hours. A recent survey shows that most residents who work full-time cannot visit during the library's current weekday-evening hours.",
+      "question": "The argument depends on assuming which one of the following?",
+      "choices": [
+        "Most residents of the city work full-time.",
+        "Full-time workers who cannot currently visit would use the library if weekend hours were added.",
+        "The library has enough funding to extend its hours.",
+        "Most libraries in other cities offer weekend hours.",
+        "No full-time worker has ever visited the library on a weekday evening."
+      ],
+      "answerIndex": 1,
+      "explanation": "Negation test: if those workers would NOT visit even with weekend hours, extending hours would not serve them and the recommendation collapses — so (B) is required. (A) and (D) are not needed; (C) is a separate practical issue; (E) is too extreme.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_weaken_breakfast",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::weaken",
+        "lsat::flaw::correlation_vs_causation",
+        "lsat::concept::causal_reasoning"
+      ],
+      "stimulus": "Students who eat breakfast score higher on exams than students who skip it. Therefore, eating breakfast improves exam performance.",
+      "question": "Which one of the following, if true, most weakens the argument?",
+      "choices": [
+        "A few students who skip breakfast still score well.",
+        "Well-organized students tend both to eat breakfast and to study more, and studying raises scores.",
+        "Breakfast supplies energy that the brain uses during testing.",
+        "The comparison was based on thousands of students.",
+        "Eating a large lunch has no effect on exam scores."
+      ],
+      "answerIndex": 1,
+      "explanation": "(B) offers a common cause (being organized) that explains both eating breakfast and higher scores, undermining the claim that breakfast itself improves performance. (C) strengthens; (A), (D), (E) do not address the causal link.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_flaw_adhom_bike",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::ad_hominem"
+      ],
+      "stimulus": "Dr. Lee argues that the city should add bike lanes to reduce traffic. But Dr. Lee is an avid cyclist, so we should reject her recommendation.",
+      "question": "The reasoning above is most vulnerable to criticism on the grounds that it",
+      "choices": [
+        "relies on a sample that is too small",
+        "rejects a claim by attacking its source rather than its substance",
+        "confuses a necessary condition with a sufficient one",
+        "assumes the very point it is trying to establish",
+        "treats two options as the only possibilities"
+      ],
+      "answerIndex": 1,
+      "explanation": "The argument dismisses the recommendation because of who made it (an avid cyclist) instead of evaluating the recommendation — a classic ad hominem.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_inference_budget",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::inference",
+        "lsat::concept::conditional_logic",
+        "lsat::concept::contrapositive"
+      ],
+      "stimulus": "If the measure passes, the budget will be balanced. The budget will not be balanced.",
+      "question": "Which one of the following must be true?",
+      "choices": [
+        "The measure passed.",
+        "The measure did not pass.",
+        "If the budget is balanced, the measure passed.",
+        "The measure balances the budget only if it passes.",
+        "The budget can never be balanced."
+      ],
+      "answerIndex": 1,
+      "explanation": "Contrapositive of 'pass → balanced' is 'not balanced → not pass'. Given the budget is not balanced, the measure did not pass.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_mainconc_supplements",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::main_conclusion",
+        "lsat::concept::argument_structure"
+      ],
+      "stimulus": "Many people believe vitamin supplements improve health. However, most studies find no benefit for people who already eat a balanced diet. So, for most people, supplements are an unnecessary expense.",
+      "question": "Which one of the following most accurately expresses the main conclusion?",
+      "choices": [
+        "Many people believe supplements improve health.",
+        "Most studies find no benefit for people with balanced diets.",
+        "For most people, supplements are an unnecessary expense.",
+        "Vitamin supplements are harmful to health.",
+        "People should focus on improving their diets."
+      ],
+      "answerIndex": 2,
+      "explanation": "(A) is a view the author pushes back on; (B) is the supporting evidence; (C) is the claim those premises are offered to support — the main conclusion. (D) and (E) are not stated.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_strengthen_fourday",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::strengthen",
+        "lsat::concept::causal_reasoning"
+      ],
+      "stimulus": "After a company switched to a four-day workweek, productivity rose 10%. The company concluded that the shorter week caused the increase.",
+      "question": "Which one of the following, if true, most strengthens the conclusion?",
+      "choices": [
+        "Employees reported feeling more rested.",
+        "A comparable company that kept its five-day week saw no productivity change over the same period.",
+        "The company hired ten new employees during the same period.",
+        "Productivity is difficult to measure precisely.",
+        "Some employees preferred the old five-day schedule."
+      ],
+      "answerIndex": 1,
+      "explanation": "(B) rules out a general time trend by showing a similar company without the change saw no rise, supporting that the four-day week caused the increase. (C) introduces an alternative cause (weakens).",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_paradox_schools",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::paradox"
+      ],
+      "stimulus": "City A spends far more per student on its schools than City B does, yet City B's students consistently outscore City A's on standardized tests.",
+      "question": "Which one of the following, if true, most helps to resolve the apparent discrepancy?",
+      "choices": [
+        "City A enrolls more students than City B.",
+        "Families in City B have, on average, higher incomes and more educational resources at home.",
+        "Both cities administer the same standardized test.",
+        "City A increased its school budget only last year.",
+        "Standardized tests measure only a portion of student ability."
+      ],
+      "answerIndex": 1,
+      "explanation": "(B) supplies an out-of-school factor (home resources) that can explain why City B scores higher despite lower school spending, reconciling the two facts.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_suffassum_tax",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::sufficient_assumption",
+        "lsat::concept::conditional_logic"
+      ],
+      "stimulus": "If a policy increases employment, it benefits the economy. The new tax policy will increase employment. Therefore, the new tax policy is worth adopting.",
+      "question": "The conclusion follows logically if which one of the following is assumed?",
+      "choices": [
+        "Any policy that benefits the economy is worth adopting.",
+        "Some policies that benefit the economy are worth adopting.",
+        "The tax policy will benefit the economy.",
+        "Every policy worth adopting increases employment.",
+        "Increasing employment is the only way to benefit the economy."
+      ],
+      "answerIndex": 0,
+      "explanation": "We can derive 'benefits the economy'. To force 'worth adopting', we need the bridge 'benefits economy → worth adopting', which is (A). (B) is too weak; (C) is already derivable but insufficient.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_parallel_choir",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::parallel_reasoning",
+        "lsat::concept::conditional_logic",
+        "lsat::concept::contrapositive"
+      ],
+      "stimulus": "All members of the choir can read music. Jordan cannot read music. So Jordan is not a member of the choir.",
+      "question": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+      "choices": [
+        "All cats are mammals. Whiskers is a mammal. So Whiskers is a cat.",
+        "All doctors have degrees. Sam has no degree. So Sam is not a doctor.",
+        "Most athletes train daily. Pat trains daily. So Pat is an athlete.",
+        "No reptiles have fur. Snakes are reptiles. So snakes have fur.",
+        "Some teachers are tall. Lee is tall. So Lee is a teacher."
+      ],
+      "answerIndex": 1,
+      "explanation": "The original is a valid contrapositive: All M are R; x lacks R; so x is not M. (B) matches exactly. (A) and (E) affirm the consequent; (C) is a 'most' fallacy; (D) is self-contradictory.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_flaw_sample_magazine",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::flaw::unrepresentative_sample"
+      ],
+      "stimulus": "A pet magazine surveyed its own readers and found that 90% favor stricter leash laws. The magazine concluded that 90% of the city's residents favor stricter leash laws.",
+      "question": "The argument is most vulnerable to criticism on the grounds that it",
+      "choices": [
+        "treats a sufficient condition as a necessary one",
+        "draws a conclusion about all residents from a sample likely to be unrepresentative",
+        "relies on the testimony of authorities outside their expertise",
+        "assumes the conclusion it sets out to prove",
+        "confuses correlation with causation"
+      ],
+      "answerIndex": 1,
+      "explanation": "The magazine's readers (pet owners/enthusiasts) are not representative of all city residents, so generalizing to everyone is unjustified.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_role_recycling",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::role_in_argument",
+        "lsat::concept::argument_structure"
+      ],
+      "stimulus": "Recycling programs are often criticized as costly. But they reduce landfill use, which lowers long-term disposal costs. Therefore, recycling programs can save money over time.",
+      "question": "The claim that recycling reduces landfill use plays which one of the following roles in the argument?",
+      "choices": [
+        "It is the argument's main conclusion.",
+        "It is a premise offered in support of the conclusion that recycling can save money.",
+        "It is a position the argument sets out to reject.",
+        "It is an unstated assumption.",
+        "It merely restates the conclusion in different words."
+      ],
+      "answerIndex": 1,
+      "explanation": "Reducing landfill use is given as support (a premise) for the main conclusion that recycling can save money over time.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_principle_blame",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::principle"
+      ],
+      "stimulus": "Principle: A person should not be blamed for an outcome that they could not reasonably have foreseen. Case: Maria lent her car to a friend who had a valid license and a clean driving record; the friend then caused an accident due to a sudden, undetectable brake failure.",
+      "question": "The principle, if valid, most supports which one of the following judgments?",
+      "choices": [
+        "Maria should be blamed because she lent out her car.",
+        "Maria should not be blamed for the accident.",
+        "The friend should never be blamed under any circumstances.",
+        "Maria should be blamed only if the car was old.",
+        "No one bears any responsibility for the accident."
+      ],
+      "answerIndex": 1,
+      "explanation": "Maria could not reasonably have foreseen a sudden, undetectable brake failure, so by the principle she should not be blamed for the accident. The principle speaks only to Maria's foreseeability, so (C) and (E) overreach.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_method_cities",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::method_of_reasoning",
+        "lsat::concept::argument_structure"
+      ],
+      "stimulus": "Critic: The new policy cannot reduce crime. Cities that adopted similar policies saw no drop in crime, and our city is not meaningfully different from those cities.",
+      "question": "The critic's argument proceeds by",
+      "choices": [
+        "appealing to the testimony of experts",
+        "drawing a conclusion about one case from the results of closely analogous cases",
+        "pointing out an internal contradiction in an opposing view",
+        "defining a key term and then applying it",
+        "rejecting a claim merely because of its source"
+      ],
+      "answerIndex": 1,
+      "explanation": "The critic reasons by analogy: because similar cities saw no effect and our city is relevantly similar, the policy will not work here.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_method_hours",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::method_of_reasoning"
+      ],
+      "stimulus": "Manager: Some say longer hours boost output. But when we extended hours last year, output per employee actually fell. So longer hours do not boost output here.",
+      "question": "The manager responds to the claim by",
+      "choices": [
+        "presenting a counterexample drawn from the company's own experience",
+        "attacking the character of those who made the claim",
+        "appealing to a general principle about fairness",
+        "showing that the claim is self-contradictory",
+        "redefining the term output"
+      ],
+      "answerIndex": 0,
+      "explanation": "The manager rebuts the general claim with a specific counterexample from the company's own trial of longer hours.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_pointissue_library",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::point_at_issue"
+      ],
+      "stimulus": "Ana: We should fund the new library branch; access to books improves literacy. Ben: Literacy matters, but the city budget cannot support a new branch right now.",
+      "question": "Ana and Ben disagree over whether",
+      "choices": [
+        "literacy is important",
+        "the city should fund the new library branch now",
+        "books improve literacy",
+        "the city has a budget",
+        "libraries provide access to books"
+      ],
+      "answerIndex": 1,
+      "explanation": "Ana endorses funding the branch now; Ben opposes it on budget grounds. That is the claim they would answer differently.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_pointissue_drug",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::point_at_issue"
+      ],
+      "stimulus": "Researcher 1: The drug is safe; trials showed no serious side effects. Researcher 2: The trials were too short to reveal long-term effects, so we cannot yet call it safe.",
+      "question": "The point at issue between the researchers is whether",
+      "choices": [
+        "the drug had any side effects during the trials",
+        "the trials were actually conducted",
+        "the drug can currently be considered safe",
+        "long-term effects are possible for any drug",
+        "the drug is effective"
+      ],
+      "answerIndex": 2,
+      "explanation": "They disagree about whether the drug can be called safe now; Researcher 2 says the evidence so far is insufficient.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_evaluate_toothpaste",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::evaluate",
+        "lsat::concept::causal_reasoning"
+      ],
+      "stimulus": "Advertisement: People who use our toothpaste have fewer cavities than people who do not. So our toothpaste prevents cavities.",
+      "question": "The answer to which one of the following would be most useful in evaluating the argument?",
+      "choices": [
+        "How many people use the toothpaste?",
+        "Do toothpaste users also differ in diet or dental-care habits that affect cavities?",
+        "What flavor is the toothpaste?",
+        "How long has the brand existed?",
+        "Is the toothpaste expensive?"
+      ],
+      "answerIndex": 1,
+      "explanation": "The argument assumes no alternative cause. Whether users differ in other cavity-affecting ways directly tests that assumption.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_evaluate_speedbumps",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::evaluate"
+      ],
+      "stimulus": "Town official: Installing speed bumps will make Main Street safer, because accidents fell on Oak Street after speed bumps were added there.",
+      "question": "The answer to which one of the following would most help to evaluate the official's reasoning?",
+      "choices": [
+        "Are Main Street and Oak Street similar in traffic and in the causes of their accidents?",
+        "How much do speed bumps cost?",
+        "Who installed the Oak Street speed bumps?",
+        "How many cars use Oak Street?",
+        "Is Main Street longer than Oak Street?"
+      ],
+      "answerIndex": 0,
+      "explanation": "The argument rests on an analogy between the streets; whether they are relevantly similar determines whether the analogy holds.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_necassum_museum",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::necessary_assumption",
+        "lsat::concept::assumption"
+      ],
+      "stimulus": "The museum should display the painting in natural light, because natural light reveals the artist's color choices more faithfully than artificial light does.",
+      "question": "The argument depends on assuming which one of the following?",
+      "choices": [
+        "Displaying the painting faithfully to the artist's color choices is desirable.",
+        "Artificial light damages paintings.",
+        "All visitors prefer natural light.",
+        "The painting contains many colors.",
+        "Natural light costs nothing."
+      ],
+      "answerIndex": 0,
+      "explanation": "Negation test: if faithful display of the artist's colors were not desirable, the stated reason would no longer support the recommendation.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_suffassum_book",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::sufficient_assumption",
+        "lsat::concept::conditional_logic"
+      ],
+      "stimulus": "If a book is well-researched, it is trustworthy. This book is well-researched. Therefore, this book should be assigned in class.",
+      "question": "The conclusion follows logically if which one of the following is assumed?",
+      "choices": [
+        "Any trustworthy book should be assigned in class.",
+        "Some trustworthy books should be assigned in class.",
+        "Well-researched books are rare.",
+        "This book is trustworthy.",
+        "Books assigned in class are trustworthy."
+      ],
+      "answerIndex": 0,
+      "explanation": "We can derive that the book is trustworthy; the bridge trustworthy -> should be assigned forces the conclusion. (D) is already derivable but not enough.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_strengthen_entrance",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::strengthen",
+        "lsat::concept::causal_reasoning"
+      ],
+      "stimulus": "A store moved its entrance and sales rose 15%. The owner concludes that the new entrance caused the increase.",
+      "question": "Which one of the following, if true, most strengthens the conclusion?",
+      "choices": [
+        "Foot traffic past the store was unchanged over the period.",
+        "The store also cut prices that month.",
+        "Customers say they like the new entrance.",
+        "Sales are measured monthly.",
+        "The old entrance was rarely photographed."
+      ],
+      "answerIndex": 0,
+      "explanation": "Holding foot traffic constant rules out a major alternative explanation, supporting that the entrance change caused the rise. (B) introduces an alternative cause.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_weaken_afterschool",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::weaken",
+        "lsat::concept::causal_reasoning"
+      ],
+      "stimulus": "Our after-school program improves grades: students in the program have higher GPAs than students who are not in it.",
+      "question": "Which one of the following, if true, most weakens the argument?",
+      "choices": [
+        "Students who choose to join the program already had higher grades before joining.",
+        "The program meets twice a week.",
+        "A few students in the program have low GPAs.",
+        "GPA is measured on a 4.0 scale.",
+        "The program is offered free of charge."
+      ],
+      "answerIndex": 0,
+      "explanation": "If higher-achieving students self-select into the program, the GPA gap may reflect who joins, not the program's effect.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_inference_debate",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::inference",
+        "lsat::concept::conditional_logic"
+      ],
+      "stimulus": "Every member of the debate team is also in the honor society. No one in the honor society failed the exam.",
+      "question": "If the statements above are true, which one of the following must be true?",
+      "choices": [
+        "No member of the debate team failed the exam.",
+        "Everyone in the honor society is on the debate team.",
+        "Some honor society members are not on the debate team.",
+        "Everyone who passed the exam is on the debate team.",
+        "Some debate team members failed the exam."
+      ],
+      "answerIndex": 0,
+      "explanation": "Debate team is a subset of the honor society, and no honor-society member failed, so no debate-team member failed.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_mainconc_festival",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::main_conclusion",
+        "lsat::concept::argument_structure"
+      ],
+      "stimulus": "Critics claim the festival is too expensive. But it draws thousands of visitors who spend money downtown. Thus the festival is worth its cost.",
+      "question": "Which one of the following most accurately expresses the main conclusion?",
+      "choices": [
+        "The festival is too expensive.",
+        "The festival draws thousands of visitors.",
+        "The festival is worth its cost.",
+        "Visitors spend money downtown.",
+        "The critics are mistaken about everything."
+      ],
+      "answerIndex": 2,
+      "explanation": "(A) is the view being rebutted; (B) and (D) are premises; (C) is the claim those premises support.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_parallel_rain",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::parallel_reasoning",
+        "lsat::concept::conditional_logic",
+        "lsat::concept::contrapositive"
+      ],
+      "stimulus": "If it rains, the game is canceled. The game was not canceled. So it did not rain.",
+      "question": "Which one of the following is most similar in its reasoning to the argument above?",
+      "choices": [
+        "If the alarm rings, there is smoke. The alarm did not ring. So there is no smoke.",
+        "If the switch is on, the light is on. The light is not on. So the switch is not on.",
+        "If she studies, she passes. She passed. So she studied.",
+        "Most birds fly. Penguins are birds. So penguins fly.",
+        "If A then B. A is true. So B is true."
+      ],
+      "answerIndex": 1,
+      "explanation": "The original is a valid contrapositive (modus tollens): A->B, not B, so not A. (B) matches. (A) denies the antecedent; (C) affirms the consequent.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_principle_promise",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::principle"
+      ],
+      "stimulus": "Principle: One should keep a promise unless doing so would cause serious harm. Case: Sam promised to drive a friend to the airport, but on the way notices the brakes failing dangerously.",
+      "question": "The principle most supports which one of the following judgments?",
+      "choices": [
+        "Sam must continue driving in order to keep the promise.",
+        "Sam may stop driving, since continuing would risk serious harm.",
+        "Sam should never make promises.",
+        "Sam must keep the promise only if the friend pays for gas.",
+        "Promises are never binding."
+      ],
+      "answerIndex": 1,
+      "explanation": "Continuing risks serious harm, which the principle treats as overriding the duty to keep the promise.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_paradox_bus",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::paradox"
+      ],
+      "stimulus": "After the city doubled the frequency of its bus service, total bus ridership stayed exactly the same.",
+      "question": "Which one of the following, if true, most helps to explain this result?",
+      "choices": [
+        "A new subway line opened the same month and drew away many former bus riders.",
+        "Buses are cheaper to ride than subways.",
+        "The city has many bus stops.",
+        "Ridership is counted every day.",
+        "Some of the buses were brand new."
+      ],
+      "answerIndex": 0,
+      "explanation": "A competing new option that pulled riders away explains why extra service did not raise net ridership.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_role_chemical",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::role_in_argument",
+        "lsat::concept::argument_structure"
+      ],
+      "stimulus": "Some argue we should ban the chemical. True, it is toxic in large doses. But the doses people actually encounter are far too small to cause harm. So a ban is unwarranted.",
+      "question": "The claim that the chemical is toxic in large doses plays which one of the following roles?",
+      "choices": [
+        "It is the main conclusion of the argument.",
+        "It is a point the argument concedes before arguing against the ban.",
+        "It is the primary evidence offered in favor of a ban.",
+        "It restates the conclusion in other words.",
+        "It is an unsupported assumption the argument needs."
+      ],
+      "answerIndex": 1,
+      "explanation": "The author grants the toxicity point as a concession, then argues it does not justify a ban given real-world doses.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_rc_reef_mainpoint",
+      "type": "practice",
+      "tags": [
+        "lsat::rc::main_point"
+      ],
+      "stimulus": "Passage A: Coral reefs are often called the rainforests of the sea, yet the comparison can mislead. Rainforests grow in nutrient-rich soils, whereas reefs thrive in nutrient-poor tropical waters. The reef's productivity comes from a partnership: coral animals host microscopic algae that turn sunlight into food and share it with their hosts. When ocean temperatures rise even slightly, the corals expel these algae and lose their main energy source, a process called bleaching. Some researchers once assumed bleached reefs were dead, but recent studies show that if cooler conditions return quickly, many corals can recover.",
+      "question": "Which one of the following most accurately states the main point of the passage?",
+      "choices": [
+        "Coral reefs obtain nutrients in exactly the same way rainforests do.",
+        "Reef productivity depends on a coral-algae partnership that warming disrupts, though some recovery is possible.",
+        "Bleached reefs are always dead.",
+        "Rainforests grow in nutrient-poor soils.",
+        "Ocean temperatures rarely change."
+      ],
+      "answerIndex": 1,
+      "explanation": "The passage centers on the partnership, how warming causes bleaching, and that recovery is sometimes possible.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_rc_reef_purpose",
+      "type": "practice",
+      "tags": [
+        "lsat::rc::primary_purpose"
+      ],
+      "stimulus": "Passage A: Coral reefs are often called the rainforests of the sea, yet the comparison can mislead. Rainforests grow in nutrient-rich soils, whereas reefs thrive in nutrient-poor tropical waters. The reef's productivity comes from a partnership: coral animals host microscopic algae that turn sunlight into food and share it with their hosts. When ocean temperatures rise even slightly, the corals expel these algae and lose their main energy source, a process called bleaching. Some researchers once assumed bleached reefs were dead, but recent studies show that if cooler conditions return quickly, many corals can recover.",
+      "question": "The primary purpose of the passage is to",
+      "choices": [
+        "argue that reefs are more valuable than rainforests",
+        "explain how coral reefs are productive and what happens when waters warm",
+        "criticize researchers for studying reefs",
+        "describe a method for growing rainforests",
+        "prove that every bleached coral recovers"
+      ],
+      "answerIndex": 1,
+      "explanation": "The passage explains the reef's productivity mechanism and the effect of warming; it does not argue a value claim or criticize.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_rc_reef_attitude",
+      "type": "practice",
+      "tags": [
+        "lsat::rc::author_attitude"
+      ],
+      "stimulus": "Passage A: Coral reefs are often called the rainforests of the sea, yet the comparison can mislead. Rainforests grow in nutrient-rich soils, whereas reefs thrive in nutrient-poor tropical waters. The reef's productivity comes from a partnership: coral animals host microscopic algae that turn sunlight into food and share it with their hosts. When ocean temperatures rise even slightly, the corals expel these algae and lose their main energy source, a process called bleaching. Some researchers once assumed bleached reefs were dead, but recent studies show that if cooler conditions return quickly, many corals can recover.",
+      "question": "The author's attitude toward the claim that bleached reefs are dead is best described as",
+      "choices": [
+        "complete agreement",
+        "qualified skepticism, since recovery is sometimes possible",
+        "hostility toward all researchers",
+        "total indifference",
+        "certainty that no reef ever recovers"
+      ],
+      "answerIndex": 1,
+      "explanation": "The phrasing once assumed ... but recent studies show signals the author qualifies and pushes back on that claim.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_rc_reef_inference",
+      "type": "practice",
+      "tags": [
+        "lsat::rc::inference"
+      ],
+      "stimulus": "Passage A: Coral reefs are often called the rainforests of the sea, yet the comparison can mislead. Rainforests grow in nutrient-rich soils, whereas reefs thrive in nutrient-poor tropical waters. The reef's productivity comes from a partnership: coral animals host microscopic algae that turn sunlight into food and share it with their hosts. When ocean temperatures rise even slightly, the corals expel these algae and lose their main energy source, a process called bleaching. Some researchers once assumed bleached reefs were dead, but recent studies show that if cooler conditions return quickly, many corals can recover.",
+      "question": "It can be inferred from the passage that coral bleaching",
+      "choices": [
+        "is caused by nutrient-rich soil",
+        "results from the loss of the algae that supply corals with food",
+        "occurs only in rainforests",
+        "always kills the coral permanently",
+        "increases the reef's energy supply"
+      ],
+      "answerIndex": 1,
+      "explanation": "Corals expel the algae that are their main energy source, so bleaching is the loss of that food supply.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_rc_library_detail",
+      "type": "practice",
+      "tags": [
+        "lsat::rc::detail"
+      ],
+      "stimulus": "Passage B: In the nineteenth century, the spread of free public libraries was driven less by a love of literature than by anxieties about a rapidly industrializing society. Reformers argued that libraries would give working people an alternative to the tavern and would cultivate the self-discipline that factory owners prized. Critics, however, warned that unsupervised reading might spread radical ideas. Andrew Carnegie, who funded thousands of library buildings, sided with the reformers, viewing the library as an engine of individual self-improvement. Whatever their motives, these institutions outlasted the debates that produced them.",
+      "question": "According to the passage, critics of public libraries worried that",
+      "choices": [
+        "libraries would force taverns to close",
+        "unsupervised reading might spread radical ideas",
+        "Carnegie funded too few buildings",
+        "working people disliked reading",
+        "libraries cost nothing to build"
+      ],
+      "answerIndex": 1,
+      "explanation": "The passage states directly that critics warned unsupervised reading might spread radical ideas.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_rc_library_function",
+      "type": "practice",
+      "tags": [
+        "lsat::rc::function"
+      ],
+      "stimulus": "Passage B: In the nineteenth century, the spread of free public libraries was driven less by a love of literature than by anxieties about a rapidly industrializing society. Reformers argued that libraries would give working people an alternative to the tavern and would cultivate the self-discipline that factory owners prized. Critics, however, warned that unsupervised reading might spread radical ideas. Andrew Carnegie, who funded thousands of library buildings, sided with the reformers, viewing the library as an engine of individual self-improvement. Whatever their motives, these institutions outlasted the debates that produced them.",
+      "question": "The author mentions Andrew Carnegie primarily in order to",
+      "choices": [
+        "give an example of a prominent supporter who saw libraries as self-improvement",
+        "prove that libraries spread radical ideas",
+        "criticize wealthy philanthropists",
+        "explain how taverns operated",
+        "describe library architecture"
+      ],
+      "answerIndex": 0,
+      "explanation": "Carnegie is cited as a notable backer who aligned with the reformers' self-improvement view.",
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "p_rc_library_inference",
+      "type": "practice",
+      "tags": [
+        "lsat::rc::inference"
+      ],
+      "stimulus": "Passage B: In the nineteenth century, the spread of free public libraries was driven less by a love of literature than by anxieties about a rapidly industrializing society. Reformers argued that libraries would give working people an alternative to the tavern and would cultivate the self-discipline that factory owners prized. Critics, however, warned that unsupervised reading might spread radical ideas. Andrew Carnegie, who funded thousands of library buildings, sided with the reformers, viewing the library as an engine of individual self-improvement. Whatever their motives, these institutions outlasted the debates that produced them.",
+      "question": "The passage suggests that the motives behind founding public libraries were",
+      "choices": [
+        "purely literary",
+        "mixed, including social discipline and self-improvement rather than only a love of reading",
+        "entirely radical",
+        "unknown to historians",
+        "identical to the motives for opening taverns"
+      ],
+      "answerIndex": 1,
+      "explanation": "The passage stresses anxieties, self-discipline, and self-improvement over a mere love of literature, implying mixed motives.",
+      "source": "lsac_official_prep"
+    }
   ]
 }

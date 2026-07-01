@@ -33,19 +33,12 @@ def nl(parts: list[str]) -> str:
     return "<br>".join(parts)
 
 
-def source_line(data: dict, card: dict) -> str:
-    src = data["sources"][card["source"]]
-    tail = " &middot; original practice item" if card["type"] == "practice" else ""
-    return f'<i>Source: {src["name"]} &mdash; {src["url"]}{tail}</i>'
+def concept_fields(card: dict) -> tuple[str, str]:
+    # Source is intentionally NOT shown on the card; it lives in docs/speedrun/flashcards.md.
+    return card["front"], card["back"]
 
 
-def concept_fields(data: dict, card: dict) -> tuple[str, str]:
-    front = card["front"]
-    back = nl([card["back"], "", source_line(data, card)])
-    return front, back
-
-
-def practice_fields(data: dict, card: dict) -> tuple[str, str]:
+def practice_fields(card: dict) -> tuple[str, str]:
     parts = []
     if card.get("stimulus"):
         parts += [card["stimulus"], ""]
@@ -60,8 +53,6 @@ def practice_fields(data: dict, card: dict) -> tuple[str, str]:
             f'<b>Answer: {LETTERS[ans_i]}.</b> {card["choices"][ans_i]}',
             "",
             card["explanation"],
-            "",
-            source_line(data, card),
         ]
     )
     return front, back
@@ -82,9 +73,9 @@ def main() -> int:
         deck_name = "LSAT::Concepts" if card["type"] == "concept" else "LSAT::Practice"
         did = col.decks.id(deck_name)
         if card["type"] == "concept":
-            front, back = concept_fields(data, card)
+            front, back = concept_fields(card)
         else:
-            front, back = practice_fields(data, card)
+            front, back = practice_fields(card)
         note = col.new_note(basic)
         # Stable guid keyed on our card id, so re-imports update instead of duplicate.
         note.guid = "speedrun-" + card["id"]
