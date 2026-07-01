@@ -80,11 +80,14 @@ def main() -> int:
         if c.get("stimulus"):
             L.append(f"- **Stimulus:** {c['stimulus']}")
         L.append(f"- **Question:** {c['question']}")
+        traps = c.get("choiceTraps") or []
         for i, ch in enumerate(c["choices"]):
-            L.append(f"  - {LETTERS[i]}. {ch}")
-        ai = c["answerIndex"]
-        L.append(f"- **Answer:** {LETTERS[ai]}. {c['choices'][ai]}")
+            mark = " **(correct)**" if i == c["answerIndex"] else ""
+            trap = f" _[trap: {traps[i]}]_" if i < len(traps) and traps[i] else ""
+            L.append(f"  - {LETTERS[i]}. {ch}{mark}{trap}")
         L.append(f"- **Explanation:** {c['explanation']}")
+        if c.get("difficulty"):
+            L.append(f"- **Difficulty:** {c['difficulty']}/5")
         L.append(f"- **Tags:** {tags_md(c['tags'])}")
         L.append(f"- **Source:** {src_md(sources, c['source'])}")
     L.append("")

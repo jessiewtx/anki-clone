@@ -1242,6 +1242,644 @@
       "answerIndex": 1,
       "explanation": "The passage stresses anxieties, self-discipline, and self-improvement over a mere love of literature, implying mixed motives.",
       "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_necassum_bus",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::necessary_assumption",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "The city council will reduce downtown congestion by adding a bus line that runs every ten minutes; many people who now drive will switch to it.",
+      "question": "The argument depends on assuming which one of the following?",
+      "choices": [
+        "Adding a bus line is the cheapest possible way to cut congestion.",
+        "At least some people who currently drive downtown would accept ten-minute bus service as a workable alternative.",
+        "Every person who currently drives downtown will switch to the bus.",
+        "Bus lines reduce congestion in every city that builds them.",
+        "The council has secured permanent funding to operate the line."
+      ],
+      "answerIndex": 1,
+      "choiceTraps": [
+        "out_of_scope",
+        null,
+        "too_strong",
+        "shifted_subject",
+        "plausible_unsupported"
+      ],
+      "explanation": "Negate the credited answer: if no current drivers would accept ten-minute service, none switch and congestion is unchanged, so it is required. The rest are traps: cost is out of scope, 'every driver' is too strong, generalizing to all cities shifts the subject, and permanent funding is plausible but unnecessary to the reasoning.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_weaken_walk",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::weaken",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Employees who take a short walk at lunch report higher afternoon productivity than those who eat at their desks. So walking at lunch boosts productivity.",
+      "question": "Which one of the following, if true, most weakens the argument?",
+      "choices": [
+        "Walking at lunch also tends to improve employees' mood.",
+        "Every employee who walked outperformed every employee who did not.",
+        "The reported productivity gains were fairly small.",
+        "Employees who were already more productive were the ones more inclined to walk at lunch.",
+        "Health experts widely recommend daily physical activity."
+      ],
+      "answerIndex": 3,
+      "choiceTraps": [
+        "out_of_scope",
+        "reversal",
+        "half_right",
+        null,
+        "plausible_unsupported"
+      ],
+      "explanation": "The credited answer supplies an alternative cause: already-productive people choose to walk, so walking need not cause the gain. Traps: mood is out of scope; 'every walker outperformed' would strengthen (a reversal); the small size of the gain is half-right but irrelevant to causation; the experts' recommendation is plausible but unsupported here.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_flaw_coffee",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Neighborhoods with more coffee shops have lower crime rates. Clearly, opening coffee shops causes crime to drop.",
+      "question": "The reasoning above is most vulnerable to criticism on the grounds that it",
+      "choices": [
+        "treats a correlation between two things as if it showed that one of them causes the other",
+        "relies on a sample of neighborhoods too small to be representative",
+        "assumes that what is true of a neighborhood is true of each of its residents",
+        "concludes that opening coffee shops is the only way to reduce crime",
+        "fails to specify what counts as a coffee shop"
+      ],
+      "answerIndex": 0,
+      "choiceTraps": [
+        null,
+        "plausible_unsupported",
+        "out_of_scope",
+        "too_strong",
+        "out_of_scope"
+      ],
+      "explanation": "This is a classic correlation-treated-as-causation error. Traps: an unsupported complaint about sample size; a composition/out-of-scope shift to individual residents; an overstated 'only way' conclusion; and an out-of-scope definitional quibble.",
+      "difficulty": 1,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_infer_debate",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::inference",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "All members of the debate team are honor students. No honor student is on academic probation. Jae is on academic probation.",
+      "question": "If the statements above are true, which one of the following must also be true?",
+      "choices": [
+        "Every honor student is a member of the debate team.",
+        "Jae has never taken part in any school activity.",
+        "Jae is not a member of the debate team.",
+        "The debate team has fewer members than the school has honor students.",
+        "The debate team is the school's highest-achieving group."
+      ],
+      "answerIndex": 2,
+      "choiceTraps": [
+        "reversal",
+        "out_of_scope",
+        null,
+        "could_be_true",
+        "plausible_unsupported"
+      ],
+      "explanation": "On academic probation means not an honor student (contrapositive), and non-honor students cannot be on the debate team, so the credited answer must hold. Traps: 'every honor student is on the team' reverses the conditional; the team could have fewer members than the honor roll but need not; the other two add off-topic or unsupported claims.",
+      "difficulty": 3,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_strengthen_keyboard",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::strengthen",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "A company claims its new keyboard reduces typing errors. In a trial, typists made 20 percent fewer errors on the new keyboard than on their usual ones.",
+      "question": "Which one of the following, if true, most strengthens the argument?",
+      "choices": [
+        "The new keyboard costs more than most keyboards on the market.",
+        "Typists said they preferred the feel of the new keyboard.",
+        "A few typists made no errors on either keyboard.",
+        "The company also sells a popular ergonomic mouse.",
+        "In the trial, each typist typed the same passages under the same conditions on both keyboards."
+      ],
+      "answerIndex": 4,
+      "choiceTraps": [
+        "out_of_scope",
+        "plausible_unsupported",
+        "half_right",
+        "out_of_scope",
+        null
+      ],
+      "explanation": "Holding the passages and conditions constant rules out alternative explanations for the fewer errors, supporting the causal claim. Traps: price and the unrelated mouse are out of scope; stated preference is plausible but does not show fewer errors; 'a few made no errors' is half-right but irrelevant to the comparison.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_mainconc_remote",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::main_conclusion",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Some argue that remote work harms collaboration. But teams using shared online tools report more cross-department projects than before. So the claim that remote work necessarily harms collaboration is mistaken.",
+      "question": "Which one of the following most accurately expresses the main conclusion of the argument?",
+      "choices": [
+        "Remote work does not necessarily harm collaboration.",
+        "Teams using shared online tools report more cross-department projects.",
+        "Remote work improves collaboration for every team that adopts it.",
+        "Shared online tools are the best way for teams to collaborate.",
+        "Concerns about remote work are generally unfounded."
+      ],
+      "answerIndex": 0,
+      "choiceTraps": [
+        null,
+        "restates_premise",
+        "too_strong",
+        "out_of_scope",
+        "too_strong"
+      ],
+      "explanation": "The conclusion is the rebuttal: that remote work is not necessarily harmful to collaboration. Traps: the cross-department finding is a restated premise; 'improves for every team' and 'concerns generally unfounded' are too strong; 'best way to collaborate' is out of scope.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_principle_film",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::principle",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Reviewer: A film should be judged only on how well it achieves what it set out to do, not on whether the critic approves of its goals.",
+      "question": "Which one of the following judgments conforms most closely to the reviewer's principle?",
+      "choices": [
+        "This comedy is not the kind of film I enjoy, so it is a poor film.",
+        "This documentary set out to provoke debate and did so effectively, so it succeeds, even though I dislike its politics.",
+        "This thriller had a large budget, so it should be judged a success.",
+        "This drama achieved its aim of moving audiences, but its aim was unworthy, so it fails.",
+        "This film won several awards, so critics must have approved of its goals."
+      ],
+      "answerIndex": 1,
+      "choiceTraps": [
+        "reversal",
+        null,
+        "out_of_scope",
+        "half_right",
+        "plausible_unsupported"
+      ],
+      "explanation": "The principle says to judge a film by whether it achieves its own aim, not by the critic's approval of that aim, so the credited judgment fits. Traps: judging by personal taste reverses the principle; penalizing the goal starts right then violates it (half-right); the other two are out of scope or unsupported.",
+      "difficulty": 3,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_flaw_policy",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "The new policy is unpopular, so it must be ineffective. After all, if people dislike a policy, they will not follow it.",
+      "question": "The argument is most vulnerable to criticism on the grounds that it",
+      "choices": [
+        "presumes that every effective policy is a popular one",
+        "relies on the opinions of a small, unrepresentative group",
+        "takes a policy's being disliked to show that it does not work, though disliked policies may still be followed and effective",
+        "fails to consider the cost of enforcing the policy",
+        "concludes that the policy ought to be repealed"
+      ],
+      "answerIndex": 2,
+      "choiceTraps": [
+        "reversal",
+        "plausible_unsupported",
+        null,
+        "out_of_scope",
+        "too_strong"
+      ],
+      "explanation": "The argument assumes disliked implies not followed implies ineffective, but disliked policies can still be complied with and work. Traps: 'every effective policy is popular' reverses the relation; the sample complaint is unsupported; enforcement cost is out of scope; 'ought to be repealed' overstates the conclusion.",
+      "difficulty": 3,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_suffassum_scholarship",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::sufficient_assumption",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "The scholarship committee awards the prize to any applicant who has both a top grade average and a record of community service. Priya has a top grade average, so she will receive the scholarship.",
+      "question": "The conclusion follows logically if which one of the following is assumed?",
+      "choices": [
+        "Most applicants with top grade averages also have a record of community service.",
+        "Every applicant with a record of community service has a top grade average.",
+        "Priya has a record of community service.",
+        "The committee values community service more than grades.",
+        "Priya has volunteered more hours than any other applicant."
+      ],
+      "answerIndex": 2,
+      "choiceTraps": [
+        "half_right",
+        "reversal",
+        null,
+        "out_of_scope",
+        "too_strong"
+      ],
+      "explanation": "To guarantee the conclusion we must know Priya also meets the second condition (community service). 'Most' applicants does not guarantee it; reversing the conditional does not help; the committee's values and Priya's exact hours are unnecessary.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_method_tax",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::method_of_reasoning",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Columnist: Critics say the new tax will hurt small businesses. But when a similar tax took effect in the neighboring state, small-business revenue there rose the following year. The critics are simply wrong.",
+      "question": "The columnist's argument proceeds by",
+      "choices": [
+        "citing a comparable case whose outcome runs counter to the critics' prediction",
+        "attacking the critics' motives rather than their claim",
+        "appealing to the opinion of taxation experts",
+        "defining a key term the critics used ambiguously",
+        "generalizing from a single case to a universal rule"
+      ],
+      "answerIndex": 0,
+      "choiceTraps": [
+        null,
+        "out_of_scope",
+        "plausible_unsupported",
+        "out_of_scope",
+        "half_right"
+      ],
+      "explanation": "The columnist rebuts a prediction with an analogous case that turned out the opposite way. No motives are attacked, no experts cited, no term defined; 'generalizing to a universal rule' is tempting but the case is used to rebut, not to establish a universal law.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_parallel_bakery",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::parallel_reasoning",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "If the bakery had received the shipment, there would be fresh bread on the shelves. There is no fresh bread on the shelves. So the bakery did not receive the shipment.",
+      "question": "Which one of the following arguments is most similar in its reasoning to the argument above?",
+      "choices": [
+        "If it rains, the sidewalk gets wet. The sidewalk is wet. So it rained.",
+        "If the plant gets light, it grows. It did not get light. So it will not grow.",
+        "If the store is open, the sign is lit. The store is open. So the sign is lit.",
+        "If the alarm had been set, it would have rung at seven. It did not ring at seven. So the alarm was not set.",
+        "Whenever the team practices, it wins. The team won. So it must have practiced."
+      ],
+      "answerIndex": 3,
+      "choiceTraps": [
+        "reversal",
+        "half_right",
+        "out_of_scope",
+        null,
+        "reversal"
+      ],
+      "explanation": "The original denies the consequent to deny the antecedent (valid). The alarm case matches. Affirming-the-consequent cases reverse it; denying the antecedent is a different, invalid form; the store case is a valid but different pattern (modus ponens).",
+      "difficulty": 3,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_paradox_road",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::paradox",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "After the city widened Main Street to reduce congestion, the average commute time on Main Street actually increased.",
+      "question": "Which one of the following, if true, most helps to resolve the apparent discrepancy?",
+      "choices": [
+        "The city funded the widening with a state transportation grant.",
+        "The wider road drew many drivers away from other routes, so the volume of traffic on Main Street grew substantially.",
+        "Commute times on nearby routes fell after the widening.",
+        "Most drivers prefer wider roads to narrower ones.",
+        "Before the widening, Main Street was less congested than other routes."
+      ],
+      "answerIndex": 1,
+      "choiceTraps": [
+        "out_of_scope",
+        null,
+        "out_of_scope",
+        "plausible_unsupported",
+        "could_be_true"
+      ],
+      "explanation": "Induced demand explains why widening led to more traffic and longer commutes. Funding source, other routes' times, general preferences, and prior relative congestion do not reconcile the increase.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_pointatissue_zoo",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::point_at_issue",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Ravi: Cities should fund public zoos, because they educate the public about wildlife conservation. Mei: Zoos claim to educate, but most visitors treat them as entertainment and leave knowing no more than before.",
+      "question": "Ravi and Mei disagree over whether",
+      "choices": [
+        "public zoos in fact educate most of their visitors about conservation",
+        "cities have enough money to fund public zoos",
+        "wildlife conservation is a worthwhile goal",
+        "zoos are a form of entertainment",
+        "public funding for zoos should be increased"
+      ],
+      "answerIndex": 0,
+      "choiceTraps": [
+        null,
+        "out_of_scope",
+        "out_of_scope",
+        "half_right",
+        "out_of_scope"
+      ],
+      "explanation": "Their clash is over whether zoos actually educate visitors. Funding capacity and the worth of conservation are not disputed; that zoos entertain is not something Ravi denies; the funding conclusion is Ravi's position, not the precise point of disagreement.",
+      "difficulty": 3,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_role_vaccine",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::role_in_argument",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Widespread vaccination has nearly eliminated the disease. Some now argue that vaccination is unnecessary. But the disease is rare precisely because so many people are vaccinated; if vaccination stopped, it would likely return.",
+      "question": "The claim that the disease is rare because so many people are vaccinated plays which one of the following roles?",
+      "choices": [
+        "It is the main conclusion of the argument.",
+        "It is an assumption the argument leaves unstated.",
+        "It is offered as a reason to reject the view that vaccination is unnecessary.",
+        "It is a claim the argument sets out to disprove.",
+        "It provides background on how vaccines are manufactured."
+      ],
+      "answerIndex": 2,
+      "choiceTraps": [
+        "half_right",
+        "out_of_scope",
+        null,
+        "reversal",
+        "out_of_scope"
+      ],
+      "explanation": "The claim is a premise used to rebut the 'unnecessary' view. It is not the conclusion, not unstated (it is stated), not the target of disproof, and not background about manufacturing.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_evaluate_fertilizer",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::evaluate",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "A study found that crops treated with a new fertilizer yielded 15 percent more than untreated crops on the same farm. The company concludes that the fertilizer increases yield.",
+      "question": "Which one of the following would be most useful to determine in evaluating the argument?",
+      "choices": [
+        "Whether the treated and untreated crops received the same amounts of water and sunlight",
+        "Whether the fertilizer costs more than competing products",
+        "How many farms the company intends to sell to",
+        "Whether the untreated crops were of a popular variety",
+        "Whether the study appeared in a scientific journal"
+      ],
+      "answerIndex": 0,
+      "choiceTraps": [
+        null,
+        "out_of_scope",
+        "out_of_scope",
+        "plausible_unsupported",
+        "plausible_unsupported"
+      ],
+      "explanation": "Whether other growth factors were held constant is decisive for the causal claim. Cost, sales plans, the crop's popularity, and publication venue do not bear on whether the fertilizer caused the higher yield.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_weaken_library",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::weaken",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Students who use the library's quiet study rooms earn higher grades than students who study elsewhere. So the quiet rooms improve academic performance.",
+      "question": "Which one of the following, if true, most weakens the argument?",
+      "choices": [
+        "The library also offers group study rooms.",
+        "The quiet rooms are reserved mainly by highly motivated students, who tend to earn higher grades wherever they study.",
+        "Some students who study elsewhere also earn high grades.",
+        "Quiet environments are generally considered good for studying.",
+        "The library recently added several more quiet rooms."
+      ],
+      "answerIndex": 1,
+      "choiceTraps": [
+        "out_of_scope",
+        null,
+        "half_right",
+        "plausible_unsupported",
+        "out_of_scope"
+      ],
+      "explanation": "Self-selection by motivated students is an alternative cause of the grade gap. The other options are off point or, if anything, mildly supportive.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_strengthen_recycling",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::strengthen",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "The city's new recycling program raised recycling rates: in the year after it launched, the tonnage of recycled material collected rose 30 percent.",
+      "question": "Which one of the following, if true, most strengthens the argument?",
+      "choices": [
+        "The program was praised by several environmental groups.",
+        "Recycling is more environmentally beneficial than landfilling.",
+        "The city spent heavily advertising the program.",
+        "Over the same year, the amount of recyclable material thrown out as ordinary trash fell sharply.",
+        "Some residents recycled even before the program began."
+      ],
+      "answerIndex": 3,
+      "choiceTraps": [
+        "plausible_unsupported",
+        "out_of_scope",
+        "plausible_unsupported",
+        null,
+        "half_right"
+      ],
+      "explanation": "A sharp drop in recyclables discarded as trash shows a genuine behavior shift, supporting that the program (not a measurement quirk) raised recycling. Praise, general benefits, ad spending, and prior recyclers do not strengthen the causal claim.",
+      "difficulty": 3,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_necassum_app",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::necessary_assumption",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Our new app will succeed, because it solves a problem that no existing app addresses.",
+      "question": "The argument depends on assuming which one of the following?",
+      "choices": [
+        "There is genuine demand among users for a solution to that problem.",
+        "No competitor will ever release an app that solves the same problem.",
+        "The app is the best-designed product in its category.",
+        "Users are dissatisfied with every existing app.",
+        "The app will turn a profit within its first year."
+      ],
+      "answerIndex": 0,
+      "choiceTraps": [
+        null,
+        "too_strong",
+        "too_strong",
+        "too_strong",
+        "plausible_unsupported"
+      ],
+      "explanation": "If there were no demand for solving that problem, uniqueness alone would not bring success, so demand is required (negation test). The other options overstate what the argument needs.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_flaw_circular",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::flaw",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "The senator is trustworthy because she always tells the truth. And we know she always tells the truth because she is a trustworthy person.",
+      "question": "The reasoning above is most vulnerable to criticism on the grounds that it",
+      "choices": [
+        "attacks the senator rather than her argument",
+        "relies on the testimony of a biased source",
+        "assumes the truth of the very claim it is trying to establish",
+        "treats being trustworthy as the same as being popular",
+        "draws a conclusion that merely restates one of its premises"
+      ],
+      "answerIndex": 2,
+      "choiceTraps": [
+        "out_of_scope",
+        "plausible_unsupported",
+        null,
+        "shifted_subject",
+        "half_right"
+      ],
+      "explanation": "Each claim is supported by the other, so the argument presupposes what it aims to prove (circularity). It does not attack the person, cite a biased source, or equate trustworthiness with popularity; 'restates a premise' is close but misses that the support runs in a circle.",
+      "difficulty": 3,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_infer_committee",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::inference",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Every proposal approved by the committee has been implemented. Some proposals submitted last year were not implemented.",
+      "question": "If the statements above are true, which one of the following must also be true?",
+      "choices": [
+        "The committee approved most proposals submitted last year.",
+        "No proposal submitted last year was approved.",
+        "Every implemented proposal was submitted last year.",
+        "All proposals the committee did not approve were formally rejected.",
+        "Some proposals submitted last year were not approved by the committee."
+      ],
+      "answerIndex": 4,
+      "choiceTraps": [
+        "could_be_true",
+        "too_strong",
+        "reversal",
+        "half_right",
+        null
+      ],
+      "explanation": "Approved implies implemented, so anything not implemented was not approved; since some last-year proposals were not implemented, some were not approved. The other options are not forced (not approved need not mean formally rejected, etc.).",
+      "difficulty": 3,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_mainconc_breakfast",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::main_conclusion",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Many people believe that skipping breakfast aids weight loss. However, studies show that breakfast-skippers tend to eat more later in the day. So skipping breakfast is unlikely to be an effective weight-loss strategy.",
+      "question": "Which one of the following most accurately expresses the main conclusion of the argument?",
+      "choices": [
+        "Breakfast-skippers tend to eat more later in the day.",
+        "Skipping breakfast is unlikely to be an effective way to lose weight.",
+        "People are mistaken about most matters concerning diet.",
+        "Eating breakfast causes people to lose weight.",
+        "No one should ever skip breakfast."
+      ],
+      "answerIndex": 1,
+      "choiceTraps": [
+        "restates_premise",
+        null,
+        "too_strong",
+        "reversal",
+        "too_strong"
+      ],
+      "explanation": "The conclusion is that skipping breakfast is unlikely to be effective for weight loss. The eating-more claim is a supporting premise; the other options overstate or reverse the point.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
+    },
+    {
+      "id": "e_principle_refund",
+      "type": "practice",
+      "tags": [
+        "lsat::lr::principle",
+        "lsat::type::practice",
+        "lsat::mode::elimination"
+      ],
+      "stimulus": "Store policy: A product may be returned for a full refund only if it is defective or was misrepresented by the seller.",
+      "question": "The policy, properly applied, permits a refund in which one of the following cases?",
+      "choices": [
+        "A blender that stopped working on its first use because of a manufacturing defect.",
+        "A jacket the buyer simply decided she no longer liked.",
+        "A tablet a slightly different shade than pictured, though the listing said colors may vary.",
+        "A chair the buyer assembled incorrectly and then broke.",
+        "A camera the buyer bought on sale and now regrets buying."
+      ],
+      "answerIndex": 0,
+      "choiceTraps": [
+        null,
+        "out_of_scope",
+        "half_right",
+        "out_of_scope",
+        "out_of_scope"
+      ],
+      "explanation": "A refund is allowed only for defective or misrepresented products; the defective blender qualifies. The shade difference was disclosed (so not misrepresentation), and the rest are matters of preference or buyer error.",
+      "difficulty": 2,
+      "source": "lsac_official_prep"
     }
   ]
 }
