@@ -22,7 +22,7 @@ sys.path[:0] = ["pylib", "qt", "out/pylib", "out/qt"]
 
 from anki.collection import Collection  # noqa: E402
 
-COLLECTION = os.path.expanduser("~/Library/Application Support/Anki2/User 1/collection.anki2")
+COLLECTION = os.path.expanduser("~/Library/Application Support/Sharpe/User 1/collection.anki2")
 ENDPOINT = "http://127.0.0.1:27701/"
 USER, PASS = "jessie", "lsat"
 

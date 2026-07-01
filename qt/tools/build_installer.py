@@ -77,7 +77,7 @@ def get_briefcase_sources_path(out_dir: Path) -> Path:
             / "anki"
             / "macos"
             / "app"
-            / "Anki.app"
+            / "Sharpe.app"
             / "Contents"
             / "Resources"
         )
@@ -253,7 +253,7 @@ def package(args: argparse.Namespace) -> None:
     )
     package_path = next((out_dir / "dist").iterdir())
     package_path.rename(
-        package_path.with_stem(f"anki-{version}{get_platform_suffix()}")
+        package_path.with_stem(f"sharpe-{version}{get_platform_suffix()}")
     )
 
 

@@ -26,7 +26,7 @@ sys.path[:0] = ["pylib", "qt", "out/pylib", "out/qt"]
 
 from anki.collection import Collection, ImportAnkiPackageRequest  # noqa: E402
 
-LIVE = os.path.expanduser("~/Library/Application Support/Anki2/User 1/collection.anki2")
+LIVE = os.path.expanduser("~/Library/Application Support/Sharpe/User 1/collection.anki2")
 SEED = os.path.join(ROOT, "speedrun", "decks", "lsat_seed.json")
 APKG = os.path.join(ROOT, "out", "lsat_seed.apkg")
 DECK = "LSAT"
