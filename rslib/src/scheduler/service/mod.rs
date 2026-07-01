@@ -93,6 +93,14 @@ impl crate::services::SchedulerService for Collection {
         self.skill_weakness_queue(input.deck_id.into(), &input.skill_weights)
     }
 
+    fn reorder_deck_by_skill_weakness(
+        &mut self,
+        input: scheduler::SkillWeaknessQueueRequest,
+    ) -> Result<anki_proto::collection::OpChangesWithCount> {
+        self.reorder_by_skill_weakness(input.deck_id.into(), &input.skill_weights)
+            .map(Into::into)
+    }
+
     fn restore_buried_and_suspended_cards(
         &mut self,
         input: anki_proto::cards::CardIds,

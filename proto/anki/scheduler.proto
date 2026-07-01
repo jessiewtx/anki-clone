@@ -68,6 +68,10 @@ service SchedulerService {
   // so the highest-value (weak + heavily-tested) skills surface first.
   rpc GetSkillWeaknessQueue(SkillWeaknessQueueRequest)
       returns (SkillWeaknessQueueResponse);
+  // Speedrun LSAT: reposition a deck's new cards by concept priority, so the
+  // normal review order becomes concept-based (undo-safe reposition).
+  rpc ReorderDeckBySkillWeakness(SkillWeaknessQueueRequest)
+      returns (collection.OpChangesWithCount);
 }
 
 // Implicitly includes any of the above methods that are not listed in the

@@ -1,16 +1,23 @@
 // Copyright: Ankitects Pty Ltd and contributors
 // License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
 
-//! Speedrun LSAT: a "points-at-stake" review order.
+//! Speedrun LSAT: a concept-mastery review order that is deliberately NOT Anki's
+//! same-card-forever model.
 //!
-//! For a deck, each due card's priority is `student weakness on the card's skill
-//! * the skill's exam weight`, so the highest-value (weak + heavily-tested)
-//! skills surface first. Skills are read from note tags; weakness is derived
-//! from the revlog.
+//! Two departures from stock Anki:
+//! 1. **Fresh instances only.** Once a problem has been answered correctly it is
+//!    *retired* — it is never re-served. Otherwise a student would just memorize
+//!    "the answer is C." Each time a concept comes up, an unsolved problem for that
+//!    concept surfaces instead.
+//! 2. **Response-time mastery guard.** A "correct" answer to an exam-style problem
+//!    faster than [`MIN_PROBLEM_MILLIS`] is treated as recall/guess, not mastery, so
+//!    it does not lower the concept's weakness. Memorizing an answer therefore
+//!    retires that one instance but keeps the *concept* weak, so new problems keep
+//!    coming until the student shows real, timed skill.
 //!
-//! This is a read-only computation: it inspects cards, notes and the revlog but
-//! never mutates the collection, so undo and collection integrity are
-//! unaffected.
+//! Priority is still `weakness × exam_weight` (weak *and* heavily-tested first).
+//! The computation is read-only; `reorder_by_skill_weakness` applies the order via
+//! Anki's standard, undo-safe reposition op.
 
 use std::collections::HashMap;
 
@@ -19,6 +26,13 @@ use anki_proto::scheduler::SkillWeaknessQueueResponse;
 
 use crate::card::CardQueue;
 use crate::prelude::*;
+use crate::scheduler::new::NewCardDueOrder;
+
+/// LSAT reasoning takes real time; a "correct" answer to an exam-style problem
+/// faster than this is treated as recall/guess, not mastery (memorization guard).
+const MIN_PROBLEM_MILLIS: u32 = 8_000;
+/// Note tag marking a card as an exam-style problem (vs a plain definition card).
+const PRACTICE_TAG: &str = "lsat::type::practice";
 
 /// Aggregated review outcomes for one skill.
 #[derive(Debug, Default, Clone, Copy)]
@@ -28,11 +42,15 @@ pub(crate) struct SkillStat {
 }
 
 impl SkillStat {
-    fn record(&mut self, button_chosen: u8) {
+    /// Record one review. For exam-style problems, a correct answer only counts as
+    /// mastery if it took at least [`MIN_PROBLEM_MILLIS`]; a too-fast "correct" is
+    /// counted as an attempt but not a success (the memorization guard).
+    fn record(&mut self, button_chosen: u8, taken_millis: u32, is_problem: bool) {
         // 1=Again, 2=Hard, 3=Good, 4=Easy. 0 == manual reschedule; ignore it.
         if (1..=4).contains(&button_chosen) {
             self.reviews += 1;
-            if button_chosen >= 2 {
+            let too_fast = is_problem && taken_millis < MIN_PROBLEM_MILLIS;
+            if button_chosen >= 2 && !too_fast {
                 self.correct += 1;
             }
         }
@@ -47,6 +65,28 @@ pub(crate) fn weakness(stat: SkillStat) -> f32 {
         1.0
     } else {
         1.0 - (stat.correct as f32 / stat.reviews as f32)
+    }
+}
+
+/// Everything about one candidate card that the ordering needs. Extracted from the
+/// collection so the ordering logic itself is pure and unit-testable.
+pub(crate) struct CardInput {
+    pub card_id: i64,
+    /// Skills (tags) this card exercises that have an exam weight.
+    pub skills: Vec<String>,
+    /// True if this is an exam-style problem (subject to the response-time guard).
+    pub is_problem: bool,
+    /// True if the card is currently due (new / due learning / due review).
+    pub is_due: bool,
+    /// (button_chosen, taken_millis) for each revlog row of this card.
+    pub revlog: Vec<(u8, u32)>,
+}
+
+impl CardInput {
+    /// A problem is *retired* once answered correctly at all — re-showing it would
+    /// invite memorization, so it is never served again (regardless of speed).
+    fn is_retired(&self) -> bool {
+        self.revlog.iter().any(|(button, _)| (2..=4).contains(button))
     }
 }
 
@@ -102,14 +142,52 @@ pub(crate) fn rank_cards(cards: Vec<CardSkills>) -> Vec<Entry> {
     entries
 }
 
+/// The pure ordering: per-skill weakness is aggregated across ALL of the deck's
+/// history (with the response-time guard), then only *fresh* (non-retired) due
+/// cards are ranked by `weakness × exam_weight`.
+pub(crate) fn build_queue(cards: Vec<CardInput>, weights: &HashMap<String, f32>) -> Vec<Entry> {
+    // History matters even for retired cards, so accumulate stats over everything.
+    let mut stats: HashMap<String, SkillStat> = HashMap::new();
+    for c in &cards {
+        for skill in &c.skills {
+            let stat = stats.entry(skill.clone()).or_default();
+            for (button, millis) in &c.revlog {
+                stat.record(*button, *millis, c.is_problem);
+            }
+        }
+    }
+
+    let fresh: Vec<CardSkills> = cards
+        .into_iter()
+        .filter(|c| c.is_due && !c.skills.is_empty() && !c.is_retired())
+        .map(|c| CardSkills {
+            card_id: c.card_id,
+            skills: c
+                .skills
+                .into_iter()
+                .map(|skill| {
+                    let stat = stats.get(&skill).copied().unwrap_or_default();
+                    let exam_weight = *weights.get(&skill).unwrap_or(&0.0);
+                    SkillScore {
+                        skill,
+                        exam_weight,
+                        weakness: weakness(stat),
+                    }
+                })
+                .collect(),
+        })
+        .collect();
+
+    rank_cards(fresh)
+}
+
 impl Collection {
-    /// Build the skill-weakness priority queue for a deck (and its children).
+    /// Build the fresh-instance concept queue for a deck (and its children).
     pub fn skill_weakness_queue(
         &mut self,
         deck_id: DeckId,
         skill_weights: &HashMap<String, f32>,
     ) -> Result<SkillWeaknessQueueResponse> {
-        // Resolve the deck and its children.
         let mut deck_ids = vec![deck_id];
         if let Some(deck) = self.storage.get_deck(deck_id)? {
             for child in self.storage.child_decks(&deck)? {
@@ -125,12 +203,7 @@ impl Collection {
         let today = self.timing_today()?.days_elapsed as i32;
         let now_secs = TimestampSecs::now().0;
 
-        // Accumulate per-skill review stats across ALL cards in the deck (history
-        // matters even for cards that aren't due right now), and remember which
-        // cards are currently due along with the skills they carry.
-        let mut stats: HashMap<String, SkillStat> = HashMap::new();
-        let mut due: Vec<(i64, Vec<String>)> = vec![];
-
+        let mut inputs = Vec::new();
         for cid in card_ids {
             let Some(card) = self.storage.get_card(cid)? else {
                 continue;
@@ -138,63 +211,78 @@ impl Collection {
             let Some(note) = self.storage.get_note(card.note_id)? else {
                 continue;
             };
-            let card_skills: Vec<String> = note
+            let skills: Vec<String> = note
                 .tags
                 .iter()
                 .filter(|t| skill_weights.contains_key(t.as_str()))
                 .cloned()
                 .collect();
-            if card_skills.is_empty() {
+            if skills.is_empty() {
                 continue;
             }
-
-            let revlog = self.storage.get_revlog_entries_for_card(cid)?;
-            for skill in &card_skills {
-                let stat = stats.entry(skill.clone()).or_default();
-                for e in &revlog {
-                    stat.record(e.button_chosen);
-                }
-            }
-
+            let is_problem = note.tags.iter().any(|t| t == PRACTICE_TAG);
+            let revlog: Vec<(u8, u32)> = self
+                .storage
+                .get_revlog_entries_for_card(cid)?
+                .into_iter()
+                .map(|e| (e.button_chosen, e.taken_millis))
+                .collect();
             let is_due = match card.queue {
                 CardQueue::New => true,
                 CardQueue::Learn => (card.due as i64) <= now_secs,
                 CardQueue::Review | CardQueue::DayLearn => card.due <= today,
                 _ => false,
             };
-            if is_due {
-                due.push((cid.0, card_skills));
-            }
+            inputs.push(CardInput {
+                card_id: cid.0,
+                skills,
+                is_problem,
+                is_due,
+                revlog,
+            });
         }
 
-        let cards: Vec<CardSkills> = due
-            .into_iter()
-            .map(|(card_id, skills)| CardSkills {
-                card_id,
-                skills: skills
-                    .into_iter()
-                    .map(|skill| {
-                        let stat = stats.get(&skill).copied().unwrap_or_default();
-                        let exam_weight = *skill_weights.get(&skill).unwrap_or(&0.0);
-                        SkillScore {
-                            skill,
-                            exam_weight,
-                            weakness: weakness(stat),
-                        }
-                    })
-                    .collect(),
-            })
-            .collect();
-
         Ok(SkillWeaknessQueueResponse {
-            entries: rank_cards(cards),
+            entries: build_queue(inputs, skill_weights),
         })
+    }
+
+    /// Reposition the deck's NEW cards so the weakest, most heavily-weighted
+    /// concepts come first, making the normal review order concept-based. This
+    /// rides Anki's standard reposition op (Op::SortCards), so it is undoable
+    /// and does not change FSRS intervals or corrupt scheduling state.
+    pub fn reorder_by_skill_weakness(
+        &mut self,
+        deck_id: DeckId,
+        skill_weights: &HashMap<String, f32>,
+    ) -> Result<OpOutput<usize>> {
+        let ranked = self.skill_weakness_queue(deck_id, skill_weights)?;
+        let mut new_cids = Vec::new();
+        for entry in ranked.entries {
+            let cid = CardId(entry.card_id);
+            if let Some(card) = self.storage.get_card(cid)? {
+                if card.queue == CardQueue::New {
+                    new_cids.push(cid);
+                }
+            }
+        }
+        self.sort_cards(&new_cids, 1, 1, NewCardDueOrder::Preserve, true)
     }
 }
 
 #[cfg(test)]
 mod test {
     use super::*;
+
+    fn card(id: i64, skill: &str, is_problem: bool, revlog: Vec<(u8, u32)>) -> CardInput {
+        CardInput {
+            card_id: id,
+            skills: vec![skill.to_string()],
+            is_problem,
+            is_due: true,
+            revlog,
+        }
+    }
 
     #[test]
     fn weakness_from_history() {
@@ -204,14 +292,15 @@ mod test {
     }
 
     #[test]
-    fn skillstat_records_only_real_buttons() {
+    fn skillstat_guards_fast_problem_answers() {
         let mut s = SkillStat::default();
-        for b in [1u8, 2, 3, 4, 0] {
-            s.record(b);
-        }
-        // 0 (manual) ignored; 1 wrong; 2/3/4 correct.
+        s.record(3, 10_000, true); // slow correct problem -> mastery
+        s.record(3, 2_000, true); // fast correct problem -> NOT mastery (guard)
+        s.record(3, 2_000, false); // fast correct definition -> counts (no guard)
+        s.record(1, 30_000, true); // wrong -> attempt, not success
+        s.record(0, 0, true); // manual reschedule -> ignored entirely
         assert_eq!(s.reviews, 4);
-        assert_eq!(s.correct, 3);
+        assert_eq!(s.correct, 2);
     }
 
     #[test]
@@ -283,10 +372,41 @@ mod test {
             }, // 0.0 -> last
         ];
         let ranked = rank_cards(cards);
-        // Tie at 0.20 broken by ascending card id: 20 before 30.
         assert_eq!(ranked[0].card_id, 20);
         assert_eq!(ranked[1].card_id, 30);
         assert_eq!(ranked[2].card_id, 40);
         assert_eq!(ranked[2].priority, 0.0);
+    }
+
+    #[test]
+    fn queue_never_reshows_a_solved_problem() {
+        let weights = HashMap::from([("s".to_string(), 0.5f32)]);
+        let solved = card(1, "s", true, vec![(3, 10_000)]); // answered correctly -> retired
+        let fresh = card(2, "s", true, vec![]); // unseen -> should be served
+        let out = build_queue(vec![solved, fresh], &weights);
+        assert_eq!(out.len(), 1, "the solved problem must not be re-shown");
+        assert_eq!(out[0].card_id, 2);
+    }
+
+    #[test]
+    fn fast_correct_retires_instance_but_keeps_concept_weak() {
+        let weights = HashMap::from([("s".to_string(), 0.5f32)]);
+        let queue = |a_millis: u32| {
+            // A: answered correctly (retired either way); B: a fresh instance.
+            let a = card(1, "s", true, vec![(3, a_millis)]);
+            let b = card(2, "s", true, vec![]);
+            build_queue(vec![a, b], &weights)
+        };
+        let fast = queue(2_000); // A answered too fast to be real mastery
+        let slow = queue(20_000); // A answered with genuine reasoning time
+
+        // Either way the solved instance A retires; the fresh instance B is served.
+        assert_eq!(fast[0].card_id, 2);
+        assert_eq!(slow[0].card_id, 2);
+        // A fast "correct" gives no mastery credit -> concept stays maximally weak,
+        // so more fresh problems keep coming.
+        assert_eq!(fast[0].weakness, 1.0);
+        // A genuine timed solve masters the concept -> weakness collapses.
+        assert_eq!(slow[0].weakness, 0.0);
     }
 }
