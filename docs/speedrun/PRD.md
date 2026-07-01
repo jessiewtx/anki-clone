@@ -2,7 +2,11 @@
 
 **Product:** An Anki fork (desktop) + Android companion that share one Rust engine and turn LSAT study into three honest, separately-reported scores.
 **Exam:** LSAT (scored 120–180; 2 Logical Reasoning + 1 Reading Comprehension scored sections; writing + experimental unscored).
-**Thesis (from brainlift):** Spaced repetition is "a great solution to the wrong problem" for the LSAT (SPOV 1). The LSAT tests *applied reasoning*, not recall — so we measure the gap between memory and performance, and use AI to generate *novel* reasoning problems (SPOV 2).
+**Thesis (from brainlift):**
+- **SPOV 1 — Spaced repetition solves the wrong problem.** FSRS measures memory well; the LSAT tests *applied reasoning*. We measure the memory→performance→readiness gap and never hide it.
+- **SPOV 2 — The LSAT is an elimination game, not a recall game.** You win by killing trap answers, so we train and score *trap elimination* (name why each wrong answer is wrong) and *argument diagnosis* (name the flaw) — not answer recall.
+- **SPOV 3 — Confidence is a trainable, measurable skill, and the honest readiness score falls out of it.** Students *stake conviction* on answers via a proper scoring rule; their stake-vs-outcome record *is* the calibration the honesty rule demands. Themed as a **conviction market** (Kalshi / poker feel) for a 20-something audience.
+- **AI is build-time only:** it may pre-generate novel, source-cited problems to grow the bank *before* deploy; the app the student uses runs **AI-free** (no live/adaptive model).
 
 ---
 
@@ -12,7 +16,8 @@
 |---|---|---|
 | Exam | **LSAT** | Locked (your brainlift) |
 | Mobile target | **AnkiDroid (Android emulator)** | Open-source AGPL, already wraps the shared Rust backend → easiest "one engine + sync." (iOS-via-FFI is valid but more signing friction.) |
-| Rust engine change | **Skill-weakness priority queue** | Sorts due cards by `skill weight × student weakness`; new protobuf message called from Python. Directly implements SPOV 2 ("rethink scheduling to surface weak reasoning skills"). |
+| Rust engine change | **Concept scheduler** | Ranks due cards by `weakness × exam weight`, **retires solved problems** (fresh instances), and **discounts speed-guesses**; new protobuf RPCs called from Python. Implements SPOV 1–2. |
+| Theme | **Conviction market** (Kalshi / poker feel) | Confidence-staking *is* the calibration mechanic, and the aesthetic fits a 20-something audience without being childish. |
 | Study feature to ablate | **Interleaving** (mix LR skill types in a session) | Cited in your brainlift (Bjork, desirable difficulties). Hypothesis: raises accuracy on new mixed-skill questions at equal study time. |
 | Sync / storage | **Anki sync (cards+reviews)** + **Firestore (LSAT score layer)** | Anki's sync already handles no-loss / no-double-count for reviews; Firestore holds skills, questions, attempts, scores, evals. |
 
@@ -25,8 +30,9 @@
 - Desktop Anki fork + Android companion sharing the **same Rust engine**, two-way sync, offline-then-reconcile.
 - LSAT **skill taxonomy** + **coverage map** (% of official outline the deck covers).
 - **Rust change:** skill-weakness priority queue (3 Rust tests + 1 Python-callable test, undo-safe).
+- **Reasoning engine (the not-flashcard core):** a **conviction-market** interaction — diagnose the argument, stake conviction across choices, name each wrong answer's trap; scored by a proper scoring rule; **fresh questions only** (retired once solved).
 - **Three scores**, each with point estimate + range + coverage % + confidence + "last updated" + reasons + give-up rule:
-  - Memory (FSRS, calibrated), Performance (BKT/IRT on held-out questions), Readiness (mapped to 120–180).
+  - Memory (FSRS, calibrated), Performance (staking + per-trap elimination on unseen items), Readiness (mapped to 120–180, calibrated from conviction stakes).
 - **AI:** generate LR-style questions from a real source; every output traces to a named source; checked against a 50-item gold set; beats a keyword/vector baseline; **app still scores with AI off**.
 - **Evals (re-runnable, held-out):** memory calibration (Brier/log-loss), performance accuracy, paraphrase test, leakage check, AI card check, one-command benchmark.
 - Interleaving feature + **3-build ablation** (full / feature-off / plain Anki).
@@ -58,6 +64,8 @@
 6. As a student studying offline, my reviews **queue locally** and sync cleanly when I reconnect.
 7. As a student, I see **% of the LSAT my deck covers**, so I know what's missing.
 8. As the evaluator (me), I can **re-run all evals with one command** and get the same numbers on held-out data.
+9. As a student, I **stake my conviction** on answers and get a **calibration report** showing where I'm overconfident — so I learn to trust my instincts and when to guess and move on.
+10. As a student, for each wrong choice I **name the trap** (why it's wrong), and the app tracks which **trap types** fool me most.
 
 ---
 
@@ -71,19 +79,31 @@
 
 Each skill has: `examWeight` (frequency on the real exam), and per-student `mastery` (BKT).
 
-**Give-up rule (stated):** *No readiness score until the student has ≥ 200 graded performance attempts AND ≥ 50% topic coverage AND a computed calibration.* Below that, show coverage + "not enough data," never a number.
+**Trap taxonomy (the elimination axis — *why* wrong answers are wrong):** out of scope · too strong/extreme · reversal/opposite · half-right · correlation≠causation · could-be-true ≠ must-be-true · restates a premise/circular · plausible but unsupported · shifted subject/wrong comparison. Every practice item tags each wrong choice with its trap, so the app measures **elimination accuracy per trap type** (e.g., *"you fall for too-strong traps 40% of the time"*) — a second skill axis orthogonal to question type.
+
+**Give-up rule (stated):** *No readiness score until the student has ≥ 200 graded performance attempts AND ≥ 50% topic coverage AND a computed calibration (from the student's conviction stakes).* Below that, show coverage + "not enough data," never a number.
 
 **Honesty fields (every score carries):** point estimate, likely range, coverage %, confidence indicator, last-updated time, top reasons, and the give-up rule.
 
 ---
 
-## 6. The three scores
+## 6. The reasoning engine + the three scores
 
-| Score | Question it answers | Inputs | Output |
+**The core interaction is not a flashcard — it is a "conviction market" on one fresh question** (Kalshi / poker feel). For a never-before-seen item the student:
+1. **Diagnoses** the argument — names the conclusion and, for flaw items, the reasoning error.
+2. **Stakes conviction** — distributes a fixed budget across the five choices by how likely each is the answer, and/or stakes *against* a choice by naming its trap.
+3. **Reveals & is scored by a proper scoring rule** (Brier/log) so honest probabilities win over the long run and bluffing (always max-stake) loses; then names the trap on each wrong choice.
+4. **Final two** — splitting a stake between two contenders triggers a targeted discrimination drill.
+
+Because solved problems are **retired** (fresh instances) and speed-guesses are discounted, every stage emits a signal and the three scores become a *byproduct of studying*:
+
+| Score | Question | How it's produced here | Output (carries the honesty fields) |
 |---|---|---|---|
-| **Memory** | Can they recall this fact now? | FSRS state from review history | Recall probability + range; calibrated (Brier/log-loss) |
-| **Performance** | Can they answer a *new* exam-style question for this skill? | BKT mastery per skill + question difficulty (IRT) + timing + coverage | P(correct) on held-out questions + range |
-| **Readiness** | What LSAT score today, how sure? | Performance across skills × exam weights × coverage | Projected **120–180** + range + confidence + give-up |
+| **Memory** | Recall the fact now? | FSRS on concept/definition cards | recall prob + range; calibrated |
+| **Performance** | Answer a *new* question for this skill? | staking accuracy on fresh items + elimination accuracy per trap + argument-diagnosis accuracy | P(correct) on unseen items + range, per skill & trap |
+| **Readiness** | Score today, how sure? | performance × exam weights, with the **calibration curve built from the student's stakes** | 120–180 + range + **calibration** + give-up + single best next thing |
+
+**Calibration = the conviction track record.** Bucketing stakes vs. outcomes yields the honesty rule's hardest requirement — *how accurate your past guesses turned out to be* — e.g., *"when you staked 80% on Strengthen, you were right 58%: overconfident."* The **best next thing to study** is the trap/skill where your stakes are worst; low-conviction items get flagged for pacing (commit vs. guess-and-move).
 
 ---
 
@@ -102,8 +122,8 @@ Each skill has: `examWeight` (frequency on the real exam), and per-student `mast
 - `users/{uid}` — `displayName, exam:"LSAT", settings, createdAt`
 - `users/{uid}/skillState/{skillId}` — `bkt {pL0,pT,pS,pG}, masteryProb, attemptsCount, lastUpdated`
 - `questions/{questionId}` — `skillId, stem, choices[], answerIndex, rationale, difficulty (IRT b), origin (gold|generated|official), source {name, locator}, status (approved|blocked), checks {factual, teaching, duplicate}, createdAt`
-- `users/{uid}/attempts/{attemptId}` — `questionId, skillId, correct, chosenIndex, responseMs, ts, deviceId, sessionId` *(immutable, UUID-keyed)*
-- `users/{uid}/scoreSnapshots/{ts}` — `memory{p,lo,hi}, performance{p,lo,hi}, readiness{point,lo,hi}, coveragePct, confidence, reasons[], gaveUp, giveUpReason, updatedAt`
+- `users/{uid}/attempts/{attemptId}` — `questionId, skillId, correct, chosenIndex, stakes[] (conviction per choice), confidence, trapsIdentified{choiceIndex: trap}, responseMs, ts, deviceId, sessionId` *(immutable, UUID-keyed)*
+- `users/{uid}/scoreSnapshots/{ts}` — `memory{p,lo,hi}, performance{p,lo,hi}, readiness{point,lo,hi}, calibration{brier, buckets[]}, coveragePct, confidence, reasons[], gaveUp, giveUpReason, nextBest, updatedAt`
 - `evals/{evalId}` — `type (memory_calibration|performance|ai_cardcheck|baseline), metrics{...}, datasetHash, gitCommit, createdAt` *(re-runnable proof)*
 
 ### Example documents
