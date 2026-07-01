@@ -1,0 +1,119 @@
+{
+  "_comment": "Speedrun LSAT AI generator knowledge base. Every generatable flaw is grounded in a free, credible, human-written source (cited by URL). The generator instantiates NEW LR 'Flaw' stimuli from these definitions; it never copies source text verbatim.",
+  "skill": "lr_flaw",
+  "stem": "The reasoning above is most vulnerable to criticism on the grounds that it",
+  "flaws": [
+    {
+      "id": "affirming_consequent",
+      "name": "affirming the consequent",
+      "kind": "conditional_affirm",
+      "answer": "concludes that a sufficient condition was met merely because the result it guarantees occurred",
+      "source": { "name": "Affirming the consequent (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Affirming_the_consequent" }
+    },
+    {
+      "id": "denying_antecedent",
+      "name": "denying the antecedent",
+      "kind": "conditional_deny",
+      "answer": "concludes that a result will not occur merely because one sufficient condition for it is absent",
+      "source": { "name": "Denying the antecedent (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Denying_the_antecedent" }
+    },
+    {
+      "id": "cum_hoc",
+      "name": "correlation treated as causation",
+      "kind": "causal",
+      "answer": "infers a causal relationship from the mere fact that two things occur together",
+      "source": { "name": "Correlation does not imply causation (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Correlation_does_not_imply_causation" }
+    },
+    {
+      "id": "hasty_generalization",
+      "name": "hasty generalization",
+      "kind": "sample",
+      "answer": "draws a general conclusion from a sample that is too small or unrepresentative to support it",
+      "source": { "name": "Faulty generalization (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Faulty_generalization" }
+    },
+    {
+      "id": "circular_reasoning",
+      "name": "circular reasoning",
+      "answer": "presupposes the truth of the very conclusion it is trying to establish",
+      "source": { "name": "Circular reasoning (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Circular_reasoning" }
+    },
+    {
+      "id": "ad_hominem",
+      "name": "ad hominem",
+      "answer": "rejects a claim by criticizing the person who makes it rather than the claim itself",
+      "source": { "name": "Ad hominem (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Ad_hominem" }
+    },
+    {
+      "id": "false_dilemma",
+      "name": "false dilemma",
+      "answer": "treats two options as the only possibilities when other alternatives are available",
+      "source": { "name": "False dilemma (Wikipedia)", "url": "https://en.wikipedia.org/wiki/False_dilemma" }
+    },
+    {
+      "id": "equivocation",
+      "name": "equivocation",
+      "answer": "relies on a key term being used in two different senses",
+      "source": { "name": "Equivocation (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Equivocation" }
+    },
+    {
+      "id": "appeal_to_authority",
+      "name": "improper appeal to authority",
+      "answer": "takes an authority's opinion as decisive on a matter outside that authority's expertise",
+      "source": { "name": "Argument from authority (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Argument_from_authority" }
+    },
+    {
+      "id": "composition",
+      "name": "fallacy of composition",
+      "answer": "assumes that what is true of each part must be true of the whole",
+      "source": { "name": "Fallacy of composition (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Fallacy_of_composition" }
+    }
+  ],
+  "topics": {
+    "conditional": [
+      {
+        "p": "a bill has majority support",
+        "q": "it becomes law",
+        "q_obs": "This bill became law",
+        "p_conc": "this bill had majority support",
+        "p_neg": "This bill did not have majority support",
+        "q_neg": "it did not become law"
+      },
+      {
+        "p": "a student masters the material",
+        "q": "she passes the exam",
+        "q_obs": "Dana passed the exam",
+        "p_conc": "Dana mastered the material",
+        "p_neg": "Dana did not master the material",
+        "q_neg": "she did not pass the exam"
+      },
+      {
+        "p": "a metal is heated sufficiently",
+        "q": "it expands",
+        "q_obs": "This rod expanded",
+        "p_conc": "this rod was heated sufficiently",
+        "p_neg": "This rod was not heated sufficiently",
+        "q_neg": "it did not expand"
+      },
+      {
+        "p": "a restaurant is excellent",
+        "q": "it is busy on weekends",
+        "q_obs": "Rosa's is busy on weekends",
+        "p_conc": "Rosa's is excellent",
+        "p_neg": "Rosa's is not excellent",
+        "q_neg": "it is not busy on weekends"
+      }
+    ],
+    "causal": [
+      "Counties that expanded public transit last year reported lower average commute times. Clearly, expanding public transit is what shortened commutes in those counties.",
+      "Students who eat breakfast tend to score higher on tests. Therefore, eating breakfast must be causing the higher scores.",
+      "As ice cream sales rose over the summer, so did the number of sunburns. So buying ice cream evidently leads people to get sunburned.",
+      "Employees who adopted the new scheduling app finished projects faster. It follows that the app is responsible for their speed."
+    ],
+    "sample": [
+      "A reporter interviewed eight people leaving a luxury car dealership and found that most planned to vote for the incumbent. The reporter concluded that most voters in the state support the incumbent.",
+      "In a poll of fifteen readers of a cycling magazine, nearly all favored building more bike lanes. The magazine concluded that the city's residents favor more bike lanes.",
+      "A critic tried two dishes at a new restaurant, disliked both, and wrote that everything on the menu is poorly prepared.",
+      "A manager saw that the three employees who complained most were all on the sales team and concluded that the sales team is the company's least satisfied department."
+    ]
+  }
+}

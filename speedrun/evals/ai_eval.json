@@ -1,0 +1,46 @@
+{
+  "type": "ai_cardcheck",
+  "created_at": "2026-07-01T02:04:23+00:00",
+  "n_per_arm": 12,
+  "novelty_threshold": 0.6,
+  "generator": {
+    "overall_pass": 0.917,
+    "criteria": {
+      "traceable": 1.0,
+      "single_skill": 1.0,
+      "well_formed": 1.0,
+      "on_skill": 1.0,
+      "novel": 0.917
+    }
+  },
+  "baseline": {
+    "overall_pass": 0.0,
+    "criteria": {
+      "traceable": 1.0,
+      "single_skill": 1.0,
+      "well_formed": 1.0,
+      "on_skill": 1.0,
+      "novel": 0.0
+    }
+  },
+  "sample_generated": {
+    "id": "gen_flaw_affirming_consequent_0",
+    "skill": "lr_flaw",
+    "stimulus": "If a bill has majority support, then it becomes law. This bill became law. Therefore, this bill had majority support.",
+    "question": "The reasoning above is most vulnerable to criticism on the grounds that it",
+    "choices": [
+      "draws a general conclusion from a sample that is too small or unrepresentative to support it",
+      "assumes that what is true of each part must be true of the whole",
+      "presupposes the truth of the very conclusion it is trying to establish",
+      "concludes that a sufficient condition was met merely because the result it guarantees occurred",
+      "treats two options as the only possibilities when other alternatives are available"
+    ],
+    "answerIndex": 3,
+    "explanation": "This argument commits affirming the consequent: it concludes that a sufficient condition was met merely because the result it guarantees occurred. (Source: Affirming the consequent (Wikipedia))",
+    "origin": "generated-rules",
+    "source": {
+      "name": "Affirming the consequent (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Affirming_the_consequent"
+    }
+  }
+}
