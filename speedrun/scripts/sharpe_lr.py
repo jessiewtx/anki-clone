@@ -453,7 +453,102 @@ _JUDGE_BACK = """{{FrontSide}}
 {{^IsCorrect}}<div class="reveal trap">\u2717 This is a trap \u2014 <b>{{FamilyName}}</b>. {{FamilyWhy}} <span class="fine">(specifically: {{FineName}})</span></div>{{/IsCorrect}}
 <div class="explanation"><span class="ex-h">Why</span>{{Explanation}}</div>"""
 
-JUDGE_FRONT = _JUDGE_FRONT.replace("__FAMILYJSON__", _family_js())
+_JUDGE_FRONT2 = """<div class="sharpe-judge" data-qid="{{QID}}" data-verdict="{{Verdict}}" data-trap="{{Trap}}">
+  <div class="hdr">{{Skill}} &middot; Difficulty {{Difficulty}}</div>
+  <div class="stim">{{Stimulus}}</div>
+  <div class="qst">{{Question}}</div>
+  <div class="one-choice"><span class="lc">{{ChoiceLetter}}</span><span class="ct">{{Choice}}</span></div>
+  <div class="ask">Is this the correct answer?</div>
+  <div class="judge-btns">
+    <button class="jb yes" data-j="right">Right</button>
+    <button class="jb no" data-j="wrong">Wrong</button>
+  </div>
+  <div class="trap-pick" style="display:none">
+    <div class="ask2">What kind of flaw is it?</div>
+    <div class="trap-opts"></div>
+  </div>
+  <div class="result"></div>
+  <div class="hint">Lock in Right or Wrong (and the flaw), then tap Show answer to see if you were right.</div>
+</div>
+<script>
+(function () {
+  var root = document.querySelector('.sharpe-judge');
+  if (!root) return;
+  var qid = root.getAttribute('data-qid');
+  var DATA = __FAMILYJSON__;
+  var FAM = DATA.families, FINE = DATA.fine;
+  var verdict = root.getAttribute('data-verdict');
+  var fineId = root.getAttribute('data-trap') || '';
+  var flawed = verdict === 'flawed';
+  var correctFam = (FINE[fineId] || {}).family || '';
+  var pick = root.querySelector('.trap-pick');
+  var opts = root.querySelector('.trap-opts');
+  var result = root.querySelector('.result');
+  var jbs = Array.prototype.slice.call(root.querySelectorAll('.jb'));
+  var KEY = 'sharpe:pick:' + qid;
+  function say(cls, h) { if (result) { result.className = 'result ' + cls; result.innerHTML = h; } }
+
+  // ANSWER SIDE (the back template appends #sharpe-judge-data): show the pick the
+  // student locked in. The credited/trap reveal itself is rendered statically below,
+  // so nothing is graded here \u2014 and nothing is revealed on the question side.
+  if (document.getElementById('sharpe-judge-data')) {
+    var mine = null;
+    try { mine = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+    if (mine) {
+      jbs.forEach(function (x) { if (x.getAttribute('data-j') === mine.v) x.classList.add('sel'); });
+      if (mine.v === 'wrong' && mine.f) {
+        pick.style.display = 'block';
+        Object.keys(FAM).forEach(function (fid) {
+          var b = document.createElement('button');
+          b.className = 'topt' + (fid === mine.f ? ' sel' : '');
+          b.textContent = FAM[fid].name; opts.appendChild(b);
+        });
+      }
+      var right = !flawed ? (mine.v === 'right') : (mine.v === 'wrong' && mine.f === correctFam);
+      var famNm = mine.f ? ((FAM[mine.f] || { name: mine.f }).name) : '';
+      var youSaid = mine.v === 'right' ? 'Right' : ('Wrong' + (famNm ? ' \u00b7 ' + famNm : ''));
+      say(right ? 'ok' : 'bad', (right ? '\u2713' : '\u2717') + ' Your call: <b>' + youSaid + '</b>' + (right ? ' \u2014 correct.' : '.'));
+    }
+    return;
+  }
+
+  // QUESTION SIDE: record the pick only. No correctness shown until Show answer.
+  var myVerdict = null, myFam = null, done = false;
+  function commit() {
+    done = true;
+    try { localStorage.setItem(KEY, JSON.stringify({ v: myVerdict, f: myFam })); } catch (e) {}
+    var clean, tempted = [];
+    if (!flawed) clean = (myVerdict === 'right');
+    else if (myVerdict === 'right') { clean = false; tempted = [fineId]; }
+    else { clean = (myFam === correctFam); if (!clean) tempted = [fineId]; }
+    try { if (window.pycmd) window.pycmd('sharpe:attempt:' + JSON.stringify({ qid: qid, clean: !!clean, tempted: tempted })); } catch (e) {}
+    say('warn', 'Locked in \u2014 tap <b>Show answer</b> to see if you were right.');
+  }
+  jbs.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (done) return;
+      var j = btn.getAttribute('data-j');
+      jbs.forEach(function (x) { x.classList.remove('sel'); });
+      btn.classList.add('sel'); myVerdict = j; myFam = null;
+      if (j === 'wrong') {
+        pick.style.display = 'block'; say('', ''); opts.innerHTML = '';
+        Object.keys(FAM).forEach(function (fid) {
+          var b = document.createElement('button');
+          b.className = 'topt'; b.textContent = FAM[fid].name;
+          b.addEventListener('click', function () {
+            if (done) return;
+            Array.prototype.slice.call(opts.querySelectorAll('.topt')).forEach(function (x) { x.classList.remove('sel'); });
+            b.classList.add('sel'); myFam = fid; commit();
+          });
+          opts.appendChild(b);
+        });
+      } else { pick.style.display = 'none'; commit(); }
+    });
+  });
+})();
+</script>"""
+
+JUDGE_FRONT = _JUDGE_FRONT2.replace("__FAMILYJSON__", _family_js())
 JUDGE_BACK = _JUDGE_BACK
 
 

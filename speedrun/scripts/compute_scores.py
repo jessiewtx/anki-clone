@@ -34,7 +34,7 @@ SEED = os.path.join(ROOT, "speedrun", "decks", "lsat_seed.json")
 OUT = os.path.join(ROOT, "speedrun", "web", "public", "scores.json")
 
 # Give-up rule (stated, enforced): no readiness number until BOTH hold.
-MIN_PERFORMANCE_ATTEMPTS = 50
+MIN_PERFORMANCE_ATTEMPTS = 25  # ~one scored LSAT section (an LR section is ~25 Qs)
 MIN_COVERAGE = 0.50  # fraction of exam *weight* (not skill count) that must be covered
 
 

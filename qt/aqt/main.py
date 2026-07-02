@@ -1467,16 +1467,64 @@ title="{}" {}>{}</button>""".format(
 
         # Speedrun LSAT: honest readiness score (memory / performance / readiness).
         from aqt.qt import QAction
-        from aqt.speedrun_scores import show_scores
+        from aqt.speedrun_scores import show_scores, show_scores_sample
 
-        speedrun_action = QAction("Speedrun: Readiness…", self)
+        speedrun_action = QAction("Sharpe: My LSAT Score…", self)
         qconnect(speedrun_action.triggered, lambda: show_scores(self))
         m.menuTools.addAction(speedrun_action)
+
+        speedrun_sample = QAction("Sharpe: My LSAT Score — Sample preview…", self)
+        qconnect(speedrun_sample.triggered, lambda: show_scores_sample(self))
+        m.menuTools.addAction(speedrun_sample)
+
+        # Sharpe: surface the readiness score in the TOP TOOLBAR, right next to
+        # Stats — nobody thinks to look in the Tools menu for it.
+        from aqt import gui_hooks as _gh
+
+        def _sharpe_toolbar_links(links: list[str], toolbar) -> None:
+            links.insert(
+                len(links) - 1,  # just before Sync, so it sits beside Stats
+                toolbar.create_link(
+                    "sharpe_score",
+                    "Readiness",
+                    lambda: show_scores(self),
+                    tip="Your honest LSAT readiness score",
+                    id="sharpe_score",
+                ),
+            )
+
+        _gh.top_toolbar_did_init_links.append(_sharpe_toolbar_links)
+
+        # Sharpe: show the three scores (Memory / Performance / Readiness) at the
+        # top of the Stats screen, where students actually look for stats.
+        def _sharpe_stats_header(dialog) -> None:
+            try:
+                from aqt.qt import QLabel, Qt
+                from aqt.speedrun_scores import stats_header_html
+
+                html = stats_header_html(dialog.mw.col)
+                if not html:
+                    return
+                lbl = QLabel(html)
+                lbl.setTextFormat(Qt.TextFormat.RichText)
+                lbl.setWordWrap(True)
+                layout = dialog.layout()
+                if layout is not None:
+                    layout.insertWidget(0, lbl)
+            except Exception as e:
+                print("sharpe stats header failed:", e)
+
+        _gh.stats_dialog_will_show.append(_sharpe_stats_header)
 
         # Sharpe: elimination-gym trap capture + trap-aware re-rank.
         from aqt import sharpe_gym
 
         sharpe_gym.init(self)
+
+        # Sharpe: auto-load the bundled LSAT deck on a fresh install (no manual import).
+        from aqt import sharpe_seed
+
+        sharpe_seed.init(self)
 
     def updateTitleBar(self) -> None:
         self.setWindowTitle("Sharpe")

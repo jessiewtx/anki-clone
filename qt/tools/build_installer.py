@@ -184,6 +184,21 @@ def bundle_fcitx(out_dir: Path) -> None:
             )
 
 
+def bundle_seed_deck(out_dir: Path) -> None:
+    """Ship the Speedrun LSAT deck inside the app so a fresh install auto-loads it
+    (aqt/sharpe_seed.py imports it on first launch)."""
+    apkg = Path("out/lsat_seed.apkg")
+    if not apkg.exists():
+        print("bundle_seed_deck: out/lsat_seed.apkg missing; skipping")
+        return
+    aqt_dir = get_briefcase_sources_path(out_dir) / "app_packages" / "aqt"
+    if not aqt_dir.exists():
+        print(f"bundle_seed_deck: aqt not found at {aqt_dir}; skipping")
+        return
+    shutil.copy2(apkg, aqt_dir / "lsat_seed.apkg")
+    print(f"bundle_seed_deck: bundled deck into {aqt_dir / 'lsat_seed.apkg'}")
+
+
 def build(args: argparse.Namespace) -> None:
     version = args.version
     shutil.copytree(app_dir, out_dir, dirs_exist_ok=True)
@@ -208,6 +223,7 @@ def build(args: argparse.Namespace) -> None:
         ],
         cwd=out_dir,
     )
+    bundle_seed_deck(out_dir)
     prune_webengine_locales(out_dir)
     compile_sources(out_dir, version)
     if not args.skip_fcitx:

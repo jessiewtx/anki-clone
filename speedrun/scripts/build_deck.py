@@ -70,7 +70,7 @@ def main() -> int:
     col = Collection(os.path.join(tmp_dir, "col.anki2"))
 
     basic = col.models.by_name("Basic")
-    lr_model = sharpe_lr.ensure_model(col)
+    judge = sharpe_lr.ensure_judge_model(col)
     counts = {"concept": 0, "practice": 0}
 
     for card in data["cards"]:
@@ -82,22 +82,28 @@ def main() -> int:
             front, back = concept_fields(card)
             note["Front"] = front
             note["Back"] = back
+            note.tags = list(card["tags"]) + [
+                "lsat::type::concept",
+                f'src::{card["source"]}',
+                f'id::{card["id"]}',
+            ]
+            col.add_note(note, did)
+            counts["concept"] += 1
         else:
+            # Practice = Mode 1 "Trap Spotter": one choice at a time, Right/Wrong,
+            # then (if wrong) name the flaw. One judge card per choice, built from the
+            # trap-tagged questions. This mirrors the live deck (load_gym.py) so the
+            # download and the app are identical — Mode 1 first, not elimination.
+            if not card.get("choiceTraps"):
+                continue
             did = col.decks.id("LSAT::Practice")
-            note = col.new_note(lr_model)
-            # Practice is now the interactive Sharpe LR elimination card.
-            note.guid = "sharpe-elim-" + card["id"]
-            sharpe_lr.populate(note, card)
-        tags = list(card["tags"]) + [
-            f'lsat::type::{card["type"]}',
-            f'src::{card["source"]}',
-            f'id::{card["id"]}',
-        ]
-        if card["type"] == "practice":
-            tags += sharpe_lr.trap_tags(card)
-        note.tags = tags
-        col.add_note(note, did)
-        counts[card["type"]] += 1
+            for spec in sharpe_lr.judge_specs(card):
+                note = col.new_note(judge)
+                note.guid = "sharpe-judge-" + spec["qid"]
+                sharpe_lr.populate_judge(note, spec)
+                note.tags = sharpe_lr.judge_note_tags(spec) + [f'src::{card["source"]}']
+                col.add_note(note, did)
+                counts["practice"] += 1
 
     if os.path.exists(OUT_APKG):
         os.remove(OUT_APKG)
