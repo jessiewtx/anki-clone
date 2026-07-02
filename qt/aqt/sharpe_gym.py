@@ -31,6 +31,10 @@ from aqt.utils import tooltip
 DECK = "LSAT::Practice"
 _PREFIX = "sharpe:attempt:"
 
+# card.id -> whether the student's objective answer was fully correct (clean).
+# Used to override the FSRS ease so a self-reported rating can't inflate the score.
+_last_result: dict[int, bool] = {}
+
 
 def _db_path(mw) -> str:
     return os.path.join(mw.pm.profileFolder(), "sharpe.db")
@@ -67,6 +71,11 @@ def record_attempt(mw, payload: dict) -> None:
         pass
 
     tempted = [t for t in (payload.get("tempted") or []) if t and t != "unknown"]
+    try:
+        if mw.reviewer and mw.reviewer.card is not None:
+            _last_result[mw.reviewer.card.id] = bool(payload.get("clean"))
+    except Exception:
+        pass
     con = _conn(mw)
     con.execute(
         "INSERT INTO attempts(ts, qid, skill, difficulty, clean, elim_correct, tempted)"
@@ -146,8 +155,22 @@ def rerank(mw) -> None:
         tooltip(f"Re-ranked {count} practice cards by concept weakness (no trap history yet).")
 
 
+def _will_answer_card(tup, reviewer, card):
+    """Override the FSRS ease with the objective result so a wrong answer can't be
+    rated 'Easy'. Correct -> Good (3); wrong -> Again (1). Only affects gym cards
+    that reported an attempt during this review."""
+    proceed, ease = tup
+    try:
+        if card is not None and card.id in _last_result:
+            ease = 3 if _last_result.get(card.id) else 1
+    except Exception:
+        pass
+    return (proceed, ease)
+
+
 def init(mw) -> None:
     gui_hooks.webview_did_receive_js_message.append(_on_js_message)
+    gui_hooks.reviewer_will_answer_card.append(_will_answer_card)
     act = QAction("Sharpe: Re-rank by my traps", mw)
     qconnect(act.triggered, lambda: rerank(mw))
     mw.form.menuTools.addAction(act)

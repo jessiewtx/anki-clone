@@ -22,20 +22,28 @@ SEED = os.path.join(ROOT, "speedrun", "decks", "lsat_seed.json")
 OUT = os.path.join(ROOT, "out", "gym_preview.html")
 
 
-def pick_cards(data: dict, n: int = 3) -> list[dict]:
+def pick_specs(data: dict) -> list[dict]:
+    """A mix of Mode-1 judge cards: a couple of traps + the credited answer, from
+    the first two elimination questions."""
     elim = [c for c in data["cards"] if c.get("choiceTraps") and c.get("type") == "practice"]
-    return elim[:n]
+    specs = []
+    for card in elim[:2]:
+        ss = sharpe_lr.judge_specs(card)
+        flawed = [s for s in ss if s["verdict"] == "flawed"]
+        correct = [s for s in ss if s["verdict"] == "correct"]
+        specs += flawed[:2] + correct[:1]
+    return specs
 
 
 def main() -> int:
     data = json.load(open(SEED, encoding="utf-8"))
-    cards = pick_cards(data)
-    if not cards:
+    specs = pick_specs(data)
+    if not specs:
         print("no elimination cards found (need choiceTraps)")
         return 1
 
-    fronts = [sharpe_lr.render_front(c) for c in cards]
-    backs = [sharpe_lr.render_back(c) for c in cards]
+    fronts = [sharpe_lr.render_judge_front(s) for s in specs]
+    backs = [sharpe_lr.render_judge_back(s) for s in specs]
 
     template = """<!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,7 +62,7 @@ button { padding: 10px 18px; border: 0; border-radius: 10px; font-weight: 700; f
 #again, #next { background: #ececf2; color: #1a1a2e; }
 button:disabled { opacity: .5; cursor: default; }
 </style></head><body>
-<div class="brandbar"><b>Sharpe &mdash; elimination gym</b><span class="pill">preview &middot; @@N@@ questions</span></div>
+<div class="brandbar"><b>Sharpe &mdash; Trap Spotter</b><span class="pill">Mode 1 &middot; @@N@@ cards</span></div>
 <div class="wrap"><div class="card" id="app"></div></div>
 <div class="bar">
   <button id="show">Show Answer</button>
@@ -85,8 +93,8 @@ document.getElementById('next').onclick = function () { idx = (idx + 1) % FRONTS
     fronts_json = json.dumps(fronts).replace("</", "<\\/")
     backs_json = json.dumps(backs).replace("</", "<\\/")
     page = (
-        template.replace("@@CSS@@", sharpe_lr.CSS)
-        .replace("@@N@@", str(len(cards)))
+        template.replace("@@CSS@@", sharpe_lr.JUDGE_CSS)
+        .replace("@@N@@", str(len(specs)))
         .replace("@@FRONTS@@", fronts_json)
         .replace("@@BACKS@@", backs_json)
     )
@@ -94,7 +102,7 @@ document.getElementById('next').onclick = function () { idx = (idx + 1) % FRONTS
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as fh:
         fh.write(page)
-    print("wrote", OUT, "with", len(cards), "cards")
+    print("wrote", OUT, "with", len(specs), "cards")
     return 0
 
 

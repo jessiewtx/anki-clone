@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-06-30T21:47:45+00:00",
+  "updated_at": "2026-07-02T00:28:34+00:00",
   "exam": "LSAT",
   "user": "demo",
   "coverage": {
-    "covered_skills": 20,
+    "covered_skills": 18,
     "total_skills": 20,
-    "pct": 1.0
+    "pct": 0.9
   },
   "memory": {
     "point": 0.0,
