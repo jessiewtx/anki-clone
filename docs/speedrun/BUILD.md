@@ -47,14 +47,18 @@ out/pyenv/bin/python speedrun/tests/test_reorder_by_skill_weakness.py  # + undo-
 ### Build the installer (clean-machine .dmg)
 ```bash
 ./ninja installer:package
-# → out/installer/dist/anki-26.05-mac-apple.dmg
+# → out/installer/dist/sharpe-26.05-mac-apple.dmg
 ```
 
 ### Install on a clean machine
-1. Open the `.dmg` and drag **Anki** to `Applications`.
+Either build the `.dmg` (above) or **download the prebuilt one** — no dev toolchain
+needed:
+**https://github.com/jessiewtx/anki-clone/releases/tag/v26.05** → `sharpe-26.05-mac-apple.dmg`
+
+1. Open the `.dmg` and drag **Sharpe** to `Applications`.
 2. First launch (the app is **ad-hoc signed**, so macOS Gatekeeper warns once):
-   - **right-click** `Anki.app` → **Open** → **Open**, or
-   - `xattr -dr com.apple.quarantine /Applications/Anki.app`
+   - **right-click** `Sharpe.app` → **Open** → **Open**, or
+   - `xattr -dr com.apple.quarantine /Applications/Sharpe.app`
 
 > Ad-hoc signing means no `$99/yr` Apple certificate is required; the trade-off
 > is the one-time Gatekeeper step above. Full notarization is a later/bonus item.
