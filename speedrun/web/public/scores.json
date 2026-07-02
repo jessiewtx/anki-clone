@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-02T00:28:34+00:00",
+  "updated_at": "2026-07-02T00:42:35+00:00",
   "exam": "LSAT",
   "user": "demo",
   "coverage": {
     "covered_skills": 18,
     "total_skills": 20,
-    "pct": 0.9
+    "pct": 0.879
   },
   "memory": {
     "point": 0.0,
@@ -25,10 +25,10 @@
   },
   "readiness": {
     "scale": "120-180",
-    "give_up_rule": ">= 200 graded practice attempts AND >= 50% coverage",
+    "give_up_rule": ">= 50 graded practice attempts AND >= 50% coverage",
     "gave_up": true,
     "missing": [
-      "need >= 200 graded practice attempts (have 0)"
+      "need >= 50 graded practice attempts (have 0)"
     ]
   },
   "next_to_study": [

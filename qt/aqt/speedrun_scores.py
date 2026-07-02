@@ -30,8 +30,8 @@ from aqt.qt import (
 
 DECK = "LSAT"
 PRACTICE_TAG = "lsat::type::practice"
-MIN_PERFORMANCE_ATTEMPTS = 200
-MIN_COVERAGE = 0.50
+MIN_PERFORMANCE_ATTEMPTS = 50
+MIN_COVERAGE = 0.50  # fraction of exam *weight* (not skill count) that must be covered
 
 # Scored LSAT skills (tag -> exam weight), embedded so the view works in the
 # packaged app without the repo's deck JSON.
@@ -116,8 +116,14 @@ def compute(col) -> dict:
     practice = list(col.find_cards(f'deck:{DECK} "tag:{PRACTICE_TAG}"'))
     m_c, m_n = _accuracy(col, all_cards)
     p_c, p_n = _accuracy(col, practice)
-    covered = sum(1 for t in SKILL_WEIGHTS if col.find_cards(f'deck:{DECK} "tag:{t}"'))
-    coverage = covered / len(SKILL_WEIGHTS) if SKILL_WEIGHTS else 0.0
+    # Weighted coverage: the heavily-tested (and internally similar) LR skills
+    # count for more than a rare skill, so you need not cover every skill/section
+    # to project a score.
+    covered_tags = [t for t in SKILL_WEIGHTS if col.find_cards(f'deck:{DECK} "tag:{t}"')]
+    covered = len(covered_tags)
+    total_w = sum(SKILL_WEIGHTS.values())
+    covered_w = sum(SKILL_WEIGHTS[t] for t in covered_tags)
+    coverage = covered_w / total_w if total_w else 0.0
 
     missing = []
     if p_n < MIN_PERFORMANCE_ATTEMPTS:
@@ -126,7 +132,7 @@ def compute(col) -> dict:
         )
     if coverage < MIN_COVERAGE:
         missing.append(
-            f"need &ge; {int(MIN_COVERAGE * 100)}% skill coverage (have {coverage * 100:.0f}%)"
+            f"need &ge; {int(MIN_COVERAGE * 100)}% weighted coverage (have {coverage * 100:.0f}%)"
         )
 
     return {
@@ -192,12 +198,12 @@ def _render(data: dict) -> str:
     <p><b>Readiness</b> &mdash; what score today, how sure?<br>
        {readiness}</p>
     <hr>
-    <p><b>Coverage:</b> {cov*100:.0f}% of scored LSAT skills ({ck}/{ct})</p>
+    <p><b>Coverage:</b> {cov*100:.0f}% of exam weight &nbsp;({ck}/{ct} skills)</p>
     <p><b>Best next thing to study:</b> {nxt}</p>
     <p style="color:#888"><b>Give-up rule:</b> no readiness score until
        &ge; {MIN_PERFORMANCE_ATTEMPTS} graded practice attempts AND
-       &ge; {int(MIN_COVERAGE*100)}% coverage. Every number shows its range,
-       not a single figure.</p>
+       &ge; {int(MIN_COVERAGE*100)}% of exam weight covered. Every number shows
+       its range, not a single figure.</p>
     """
 
 

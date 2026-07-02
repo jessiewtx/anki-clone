@@ -34,8 +34,8 @@ SEED = os.path.join(ROOT, "speedrun", "decks", "lsat_seed.json")
 OUT = os.path.join(ROOT, "speedrun", "web", "public", "scores.json")
 
 # Give-up rule (stated, enforced): no readiness number until BOTH hold.
-MIN_PERFORMANCE_ATTEMPTS = 200
-MIN_COVERAGE = 0.50
+MIN_PERFORMANCE_ATTEMPTS = 50
+MIN_COVERAGE = 0.50  # fraction of exam *weight* (not skill count) that must be covered
 
 
 def wilson(correct: int, n: int, z: float = 1.96) -> tuple[float, float, float]:
@@ -87,12 +87,17 @@ def main() -> int:
         deck_id = col.decks.id("LSAT")
 
         # ---- coverage ----
+        # Weighted coverage: high-weight (and internally similar) LR skills count
+        # for more, so you need not cover every skill/section to project a score.
         covered = []
+        covered_w = 0.0
+        total_w = sum(float(s["examWeight"]) for s in scored)
         for s in scored:
             tag = skill_tag(s["id"])
             if col.find_cards(f'deck:LSAT "tag:{tag}"'):
                 covered.append(s["id"])
-        coverage_pct = len(covered) / len(scored) if scored else 0.0
+                covered_w += float(s["examWeight"])
+        coverage_pct = covered_w / total_w if total_w else 0.0
 
         # ---- memory (all reviews in the deck) ----
         all_cards = list(col.find_cards("deck:LSAT"))
@@ -114,7 +119,7 @@ def main() -> int:
             )
         if coverage_pct < MIN_COVERAGE:
             missing.append(
-                f"need >= {int(MIN_COVERAGE*100)}% skill coverage "
+                f"need >= {int(MIN_COVERAGE*100)}% weighted coverage "
                 f"(have {coverage_pct*100:.0f}%)"
             )
         gave_up = bool(missing)
